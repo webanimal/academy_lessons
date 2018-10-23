@@ -12,7 +12,7 @@ import android.view.MenuItem;
 
 import ru.webanimal.academy_lessons.R;
 import ru.webanimal.academy_lessons.ui.adapters.DigestAdapter;
-import ru.webanimal.academy_lessons.utils.DataUtils;
+import ru.webanimal.academy_lessons.utils.Application;
 import ru.webanimal.academy_lessons.utils.DisplayUtils;
 
 public class DigestListActivity extends AppCompatActivity {
@@ -69,7 +69,7 @@ public class DigestListActivity extends AppCompatActivity {
     //==============================================================================================
 
     private void onCreateDigests() {
-        adapter = new DigestAdapter(DataUtils.generateNews());
+        adapter = new DigestAdapter(Application.getApp().getRepository().getDigests());
         contentRecycler = findViewById(R.id.contentRecycler);
         contentRecycler.setLayoutManager(getLayoutManager());
         contentRecycler.setAdapter(adapter);
