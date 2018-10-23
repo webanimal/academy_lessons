@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.data;
+package ru.webanimal.academy_lessons.data.models;
 
 import java.io.Serializable;
 import java.util.Date;

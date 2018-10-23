@@ -15,7 +15,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.List;
 
 import ru.webanimal.academy_lessons.R;
-import ru.webanimal.academy_lessons.data.DigestItem;
+import ru.webanimal.academy_lessons.data.models.DigestItem;
 import ru.webanimal.academy_lessons.ui.DigestActivity;
 import ru.webanimal.academy_lessons.utils.DateTimeUtils;
 
