@@ -1,0 +1,117 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:colorControlNormal">@color/colorHint</item>
+        <item name="android:colorControlActivated">@color/colorPrimary</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Toolbar">
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:titleTextAppearance">@style/AppTheme.Toolbar.TextAppearance</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    <style name="AppTheme.Toolbar.TextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">@dimen/text_size_content_title</item>
+    </style>
+
+    <style name="AppTheme.Hint">
+        <item name="android:textColorHint">@color/colorHint</item>
+        <item name="android:textColor">@color/colorHint</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">@dimen/text_size_content_hint</item>
+    </style>
+
+    <style name="AppTheme.Text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">@dimen/text_size_content_text</item>
+    </style>
+
+    <style name="AppTheme.Text.Title">
+        <item name="android:textSize">@dimen/text_size_content_title</item>
+    </style>
+
+    <style name="AppTheme.Text.Comment">
+        <item name="android:textSize">@dimen/text_size_content_comment</item>
+    </style>
+
+    <style name="AppTheme.Text.Input" >
+        <item name="android:singleLine">false</item>
+    </style>
+
+    <!-- Digest card view -->
+    <style name="AppTheme.Digest">
+        <item name="android:layout_marginTop">@dimen/activity_space_vertical_xsmall</item>
+        <item name="android:layout_marginBottom">@dimen/activity_space_vertical_xsmall</item>
+        <item name="android:layout_marginStart">@dimen/activity_space_vertical_small</item>
+        <item name="android:layout_marginEnd">@dimen/activity_space_vertical_small</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="AppTheme.Digest.Category">
+        <item name="android:fontFamily">@string/font_family_condensed</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/text_size_layout_digest_category</item>
+        <item name="android:lines">@integer/layout_digest_category_lines_count</item>
+    </style>
+
+    <style name="AppTheme.Digest.Title">
+        <item name="android:textSize">@dimen/text_size_layout_digest_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lines">@integer/layout_digest_title_lines_count</item>
+    </style>
+
+    <style name="AppTheme.Digest.Text">
+        <item name="android:textSize">@dimen/text_size_layout_digest_text</item>
+        <item name="android:lines">@integer/layout_digest_text_lines_count</item>
+    </style>
+
+    <style name="AppTheme.Digest.Date">
+        <item name="android:textSize">@dimen/text_size_layout_digest_date</item>
+        <item name="android:textColor">@color/colorHint</item>
+        <item name="android:lines">@integer/layout_digest_date_lines_count</item>
+    </style>
+    <!-- Digest card view -->
+
+    <!-- Digest Full screen view -->
+    <style name="AppTheme.Digest.Full">
+        <item name="android:layout_margin">@dimen/activity_space_vertical_small</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="AppTheme.Digest.Full.Title">
+        <item name="android:textSize">@dimen/text_size_layout_digest_title</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.Digest.Full.Text">
+        <item name="android:textSize">@dimen/text_size_layout_digest_text</item>
+    </style>
+
+    <style name="AppTheme.Digest.Full.Date">
+        <item name="android:textSize">@dimen/text_size_layout_digest_date</item>
+        <item name="android:textColor">@color/colorHint</item>
+    </style>
+    <!-- Digest Full screen view -->
+
+</resources>

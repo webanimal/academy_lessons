@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/digestCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/activity_space_vertical_xsmall"
+    app:cardCornerRadius="@dimen/layout_digest_corner_radius"
+    app:cardElevation="@dimen/layout_digest_elevation"
+    app:cardBackgroundColor="@color/colorDigestBack"
+    tools:context=".ui.DigestListActivity" >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/activity_space_horizontal_xsmall"
+        android:padding="@dimen/activity_space_vertical_small"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/bckg_card_digest_content"
+        >
+
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:gravity="start"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageLayout"
+            >
+
+            <TextView
+                android:id="@+id/digestCategory"
+                style="@style/AppTheme.Digest.Category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stub_subtitle"
+                />
+
+            <TextView
+                android:id="@+id/digestTitle"
+                style="@style/AppTheme.Digest.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stub_title"
+                />
+
+            <TextView
+                android:id="@+id/digestText"
+                style="@style/AppTheme.Digest.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stub_body"
+                />
+
+            <TextView
+                android:id="@+id/digestDate"
+                style="@style/AppTheme.Digest.Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stub_date"
+                />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/imageLayout"
+            android:layout_width="@dimen/layout_digest_avatar_width"
+            android:layout_height="@dimen/layout_digest_avatar_width"
+            android:layout_margin="@dimen/activity_space_vertical_small"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/contentLayout"
+            app:layout_constraintEnd_toEndOf="parent" >
+
+            <ImageView
+                android:id="@+id/digestImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/activity_main_avatar_description"
+                app:srcCompat="@android:drawable/btn_star_big_on" />
+
+        </FrameLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

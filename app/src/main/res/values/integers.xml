@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="layout_digest_category_lines_count">1</integer>
+    <integer name="layout_digest_title_lines_count">2</integer>
+    <integer name="layout_digest_text_lines_count">4</integer>
+    <integer name="layout_digest_date_lines_count">1</integer>
+
+</resources>

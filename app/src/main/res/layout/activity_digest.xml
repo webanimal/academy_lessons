@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".ui.AboutActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <android.support.v7.widget.Toolbar
+            style="@style/AppTheme.Toolbar"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/contentScrollLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <RelativeLayout
+            android:id="@+id/contentLayout"
+            android:layout_below="@+id/appbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:nestedScrollingEnabled="true"
+            >
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/digestImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@string/activity_main_avatar_description"
+                tools:srcCompat="@drawable/img_cat_port"
+                />
+
+            <LinearLayout
+                android:id="@+id/featuresLayout"
+                android:layout_below="@id/digestImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_space_vertical_normal"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/digestTitle"
+                    style="@style/AppTheme.Digest.Full.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical|start"
+                    android:text="@string/stub_title"
+                    />
+
+                <TextView
+                    android:id="@+id/digestDate"
+                    style="@style/AppTheme.Digest.Full.Date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical|start"
+                    android:text="@string/stub_date"
+                    />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_delimiter_height"
+                    android:layout_margin="@dimen/activity_space_vertical_small"
+                    android:background="@color/colorDelimiter"
+                    />
+
+                <TextView
+                    android:id="@+id/digestText"
+                    style="@style/AppTheme.Digest.Full.Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical|start"
+                    android:text="@string/stub_body"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

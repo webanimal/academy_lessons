@@ -1,0 +1,56 @@
+<resources>
+
+    <string name="app_name" translatable="false">My digest app</string>
+
+    <!-- DigestListActivity -->
+    <string name="activity_digests_list_title">Digests</string>
+    <!-- DigestListActivity -->
+
+    <!-- DigestActivity -->
+    <string name="activity_digest_title">A digest</string>
+    <!-- DigestActivity -->
+
+    <!-- AboutActivity -->
+    <string name="activity_main_title">@string/activity_main_full_name</string>
+    <string name="activity_main_avatar_description">Avatar image</string>
+    <string name="activity_main_icon_description">Icon image</string>
+    <string name="activity_main_full_name">Sergio Dudkin</string>
+    <string name="activity_main_job">Android developer</string>
+    <string name="activity_main_skills">Snowboarding, pokering, holidaying</string>
+    <string name="activity_main_food">Ramen dishes</string>
+    <string name="activity_main_about">@string/stub_body</string>
+    <string name="activity_main_input_hint">Type your message here…</string>
+    <string name="activity_main_copyright" translatable="false">\u00A9 2018 Webanimal</string>
+    <string name="activity_main_show_twitter">Twitter is called</string>
+    <string name="activity_main_show_fb">FB is called</string>
+    <string name="activity_main_show_inst">Instagram is called</string>
+    <!-- AboutActivity -->
+
+    <!-- Alerts -->
+    <string name="alert_send_message_application_not_found">Not found an application for a sending message</string>
+    <!-- Alerts -->
+
+    <!-- Send mail tools -->
+    <string name="send_mail_intent_type" translatable="false">text/plain</string>
+    <string name="send_mail_default_email" translatable="false">andr.academy.msk@gmail.com</string>
+    <string name="send_mail_default_subject">Hello AndroidAcademy MSK!</string>
+    <string name="send_mail_chooser_title">Send message via:</string>
+    <!-- Send mail tools -->
+
+    <!-- Menues -->
+    <string name="action_news_list_about">About</string>
+    <!-- Menues -->
+
+    <!-- Fonts -->
+    <string name="font_family_regular" translatable="false">sans-serif</string>
+    <string name="font_family_condensed" translatable="false">sans-serif-condensed</string>
+    <!-- Fonts -->
+
+    <!-- Stub strings for tools -->
+    <string name="stub_title" translatable="false">Lorem ipsum dolor sit amet, consectetur.</string>
+    <string name="stub_subtitle" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="stub_body" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet metus ut nisi suscipit tempor.</string>
+    <string name="stub_date" translatable="false">25.02.2013 09:03</string>
+    <!-- Stub strings for tools -->
+
+</resources>

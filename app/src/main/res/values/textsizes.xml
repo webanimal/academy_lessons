@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_size_toolbar_title">16sp</dimen>
+    <dimen name="text_size_content_title">16sp</dimen>
+    <dimen name="text_size_content_text">14sp</dimen>
+    <dimen name="text_size_content_hint">12sp</dimen>
+    <dimen name="text_size_content_comment">12sp</dimen>
+
+    <!-- Digest card view -->
+    <dimen name="text_size_layout_digest_category">12sp</dimen>
+    <dimen name="text_size_layout_digest_title">14sp</dimen>
+    <dimen name="text_size_layout_digest_text">12sp</dimen>
+    <dimen name="text_size_layout_digest_date">10sp</dimen>
+    <!-- Digest card view -->
+
+</resources>

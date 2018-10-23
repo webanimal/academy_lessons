@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- DigestListActivity -->
+    <string name="activity_digests_list_title">Лента</string>
+    <!-- DigestListActivity -->
+
+    <!-- DigestActivity -->
+    <string name="activity_digest_title">Статья</string>
+    <!-- DigestActivity -->
+
+    <!-- AboutActivity -->
+    <string name="activity_main_title">@string/activity_main_full_name</string>
+    <string name="activity_main_avatar_description">Аватарка</string>
+    <string name="activity_main_icon_description">Иконка</string>
+    <string name="activity_main_full_name">Сергей Дудкин</string>
+    <string name="activity_main_job">Андройд разработчик</string>
+    <string name="activity_main_skills">Катаюсь на доске, играю в покер, отдыхаю</string>
+    <string name="activity_main_food">Люблю рамен</string>
+    <string name="activity_main_about">@string/stub_body</string>
+    <string name="activity_main_input_hint">Введите сообщение здесь…</string>
+    <string name="activity_main_show_twitter">Тыкнул в твиттер</string>
+    <string name="activity_main_show_fb">Тыкнул в фэйсбук</string>
+    <string name="activity_main_show_inst">Тыкнул в инстаграмм</string>
+    <!-- AboutActivity -->
+
+    <!-- Alerts -->
+    <string name="alert_send_message_application_not_found">Не найдено приложение для отправки сообщений</string>
+    <!-- Alerts -->
+
+    <!-- Send mail tools -->
+    <string name="send_mail_default_subject">Здравствуй, Андройд Академия Москва!</string>
+    <string name="send_mail_chooser_title">Отправить с помощью:</string>
+    <!-- Send mail tools -->
+
+    <!-- Menues -->
+    <string name="action_news_list_about">О приложении</string>
+    <!-- Menues -->
+
+</resources>
