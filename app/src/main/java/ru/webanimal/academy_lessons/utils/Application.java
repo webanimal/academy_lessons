@@ -3,12 +3,12 @@ package ru.webanimal.academy_lessons.utils;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
-import ru.webanimal.academy_lessons.data.DigestRepositoryImpl;
+import ru.webanimal.academy_lessons.business.Interactors;
 
 public class Application extends MultiDexApplication {
 
     private static Application sInstance;
-    private DigestRepositoryImpl repository;
+    private Interactors interactors;
 
     public Application() {
         super();
@@ -23,14 +23,14 @@ public class Application extends MultiDexApplication {
         return getApp();
     }
 
-    public DigestRepositoryImpl getRepository() {
-        return repository;
+    public Interactors getInteractors() {
+        return interactors;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        repository = new DigestRepositoryImpl();
+        interactors = new Interactors();
     }
 }

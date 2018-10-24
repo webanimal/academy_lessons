@@ -2,9 +2,9 @@
 
     <string name="app_name" translatable="false">My digest app</string>
 
-    <!-- DigestListActivity -->
+    <!-- DigestsListActivity -->
     <string name="activity_digests_list_title">Digests</string>
-    <!-- DigestListActivity -->
+    <!-- DigestsListActivity -->
 
     <!-- DigestActivity -->
     <string name="activity_digest_title">A digest</string>

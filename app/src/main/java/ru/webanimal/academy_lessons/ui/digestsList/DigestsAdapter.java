@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.ui.adapters;
+package ru.webanimal.academy_lessons.ui.digestsList;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -19,7 +19,7 @@ import ru.webanimal.academy_lessons.data.models.DigestItem;
 import ru.webanimal.academy_lessons.ui.DigestActivity;
 import ru.webanimal.academy_lessons.utils.DateTimeUtils;
 
-public class DigestAdapter extends RecyclerView.Adapter<DigestAdapter.ViewHolder> {
+public class DigestsAdapter extends RecyclerView.Adapter<DigestsAdapter.ViewHolder> {
 
     //==============================================================================================
     // Fields
@@ -32,7 +32,7 @@ public class DigestAdapter extends RecyclerView.Adapter<DigestAdapter.ViewHolder
     // Constructor
     //==============================================================================================
 
-    public DigestAdapter(List<DigestItem> digests) {
+    public DigestsAdapter(List<DigestItem> digests) {
         this.digests = digests;
     }
 

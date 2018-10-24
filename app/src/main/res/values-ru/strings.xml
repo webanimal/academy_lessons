@@ -1,8 +1,8 @@
 <resources>
 
-    <!-- DigestListActivity -->
+    <!-- DigestsListActivity -->
     <string name="activity_digests_list_title">Лента</string>
-    <!-- DigestListActivity -->
+    <!-- DigestsListActivity -->
 
     <!-- DigestActivity -->
     <string name="activity_digest_title">Статья</string>

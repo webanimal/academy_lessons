@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.ui;
+package ru.webanimal.academy_lessons.ui.digestsList;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +11,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import ru.webanimal.academy_lessons.R;
-import ru.webanimal.academy_lessons.ui.adapters.DigestAdapter;
-import ru.webanimal.academy_lessons.utils.Application;
+import ru.webanimal.academy_lessons.ui.AboutActivity;
 import ru.webanimal.academy_lessons.utils.DisplayUtils;
 
-public class DigestListActivity extends AppCompatActivity {
+public class DigestsListActivity extends AppCompatActivity {
 
     //==============================================================================================
     // Static
@@ -29,7 +28,7 @@ public class DigestListActivity extends AppCompatActivity {
     //==============================================================================================
 
     private RecyclerView contentRecycler;
-    private DigestAdapter adapter;
+    private DigestsAdapter adapter;
 
 
     //==============================================================================================
@@ -69,7 +68,7 @@ public class DigestListActivity extends AppCompatActivity {
     //==============================================================================================
 
     private void onCreateDigests() {
-        adapter = new DigestAdapter(Application.getApp().getRepository().getDigests());
+        adapter = new DigestsAdapter(new DigestsListPresenter().getDigests());
         contentRecycler = findViewById(R.id.contentRecycler);
         contentRecycler.setLayoutManager(getLayoutManager());
         contentRecycler.setAdapter(adapter);
