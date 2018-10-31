@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.ui;
+package ru.webanimal.academy_lessons.ui.digest;
 
 import android.content.Context;
 import android.content.Intent;

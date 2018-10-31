@@ -4,33 +4,45 @@ import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
 import ru.webanimal.academy_lessons.business.Interactors;
+import ru.webanimal.academy_lessons.ui.BaseController;
 
 public class Application extends MultiDexApplication {
 
+    //==============================================================================================
+    // Fields
+    //==============================================================================================
+
     private static Application sInstance;
-    private Interactors interactors;
+
+
+    //==============================================================================================
+    // Constructor
+    //==============================================================================================
 
     public Application() {
         super();
+
         sInstance = this;
     }
 
-    public static Application getApp() {
+
+    //==============================================================================================
+    // Getters and Setters
+    //==============================================================================================
+
+    public static Application provides() {
         return sInstance;
     }
 
-    public static Context getContext() {
-        return getApp();
+    public Context context() {
+        return provides();
     }
 
-    public Interactors getInteractors() {
-        return interactors;
+    public Interactors interactors() {
+        return Interactors.get();
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        interactors = new Interactors();
+    public BaseController controller() {
+        return BaseController.get();
     }
 }

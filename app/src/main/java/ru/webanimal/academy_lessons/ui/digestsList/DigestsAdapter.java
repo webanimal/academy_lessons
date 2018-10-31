@@ -12,11 +12,12 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.webanimal.academy_lessons.R;
 import ru.webanimal.academy_lessons.data.models.DigestItem;
-import ru.webanimal.academy_lessons.ui.DigestActivity;
+import ru.webanimal.academy_lessons.ui.digest.DigestActivity;
 import ru.webanimal.academy_lessons.utils.DateTimeUtils;
 
 public class DigestsAdapter extends RecyclerView.Adapter<DigestsAdapter.ViewHolder> {
@@ -25,15 +26,14 @@ public class DigestsAdapter extends RecyclerView.Adapter<DigestsAdapter.ViewHold
     // Fields
     //==============================================================================================
 
-    private final List<DigestItem> digests;
+    private final List<DigestItem> digests = new ArrayList<>();
 
 
     //==============================================================================================
     // Constructor
     //==============================================================================================
 
-    public DigestsAdapter(List<DigestItem> digests) {
-        this.digests = digests;
+    public DigestsAdapter() {
     }
 
 

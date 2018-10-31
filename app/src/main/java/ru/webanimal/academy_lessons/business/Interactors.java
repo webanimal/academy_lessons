@@ -2,12 +2,41 @@ package ru.webanimal.academy_lessons.business;
 
 public class Interactors {
 
-    private final DigestInteractorImpl digestInteractor;
-    public DigestInteractorImpl getDigestInteractor() {
-        return digestInteractor;
+    //==============================================================================================
+    // Static
+    //==============================================================================================
+
+    private static Interactors instance;
+    public static Interactors get() {
+        if (instance == null) {
+            instance = new Interactors();
+        }
+
+        return instance;
     }
 
-    public Interactors() {
+
+    //==============================================================================================
+    // Fields
+    //==============================================================================================
+
+    private final DigestInteractorImpl digestInteractor;
+
+
+    //==============================================================================================
+    // Constructor
+    //==============================================================================================
+
+    private Interactors() {
         this.digestInteractor = new DigestInteractorImpl();
+    }
+
+
+    //==============================================================================================
+    // Getters and Setters
+    //==============================================================================================
+
+    public DigestInteractorImpl getDigestInteractor() {
+        return digestInteractor;
     }
 }

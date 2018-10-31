@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.ui;
+package ru.webanimal.academy_lessons.ui.about;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
