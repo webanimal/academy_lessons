@@ -36,26 +36,12 @@
             android:animateLayoutChanges="true"
             android:nestedScrollingEnabled="true" >
 
-            <TextView
-                android:id="@+id/clickButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/activity_space_vertical_small"
-                android:focusable="true"
-                android:clickable="true"
-                android:text="@string/stub_title"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/contentRecycler"
-                />
-
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/contentRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_space_vertical_small"
                 android:nestedScrollingEnabled="false"
-                app:layout_constraintTop_toBottomOf="@+id/clickButton"
-                app:layout_constraintBottom_toBottomOf="parent"
                 />
 
         </android.support.constraint.ConstraintLayout>

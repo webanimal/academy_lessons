@@ -76,10 +76,6 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
 
-    // RX-views-binding
-    // Actual version 2.2.0 (2018-09-25). The latest before v3.0.* which is based on android-x
-    implementation 'com.jakewharton.rxbinding:rxbinding:0.4.0'
-
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'

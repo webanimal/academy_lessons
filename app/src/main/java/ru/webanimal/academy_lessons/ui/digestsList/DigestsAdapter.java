@@ -33,7 +33,7 @@ public class DigestsAdapter extends RecyclerView.Adapter<DigestsAdapter.ViewHold
     // Constructor
     //==============================================================================================
 
-    public DigestsAdapter() {
+    DigestsAdapter() {
     }
 
 
@@ -55,6 +55,15 @@ public class DigestsAdapter extends RecyclerView.Adapter<DigestsAdapter.ViewHold
     @Override
     public int getItemCount() {
         return digests.size();
+    }
+
+
+    //==============================================================================================
+    // Public methods
+    //==============================================================================================
+    public void setData(@NonNull List<DigestItem> dataSet) {
+        digests.clear();
+        digests.addAll(dataSet);
     }
 
 

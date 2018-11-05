@@ -42,13 +42,4 @@ public class BaseController {
     public IDigestsListPresenter getDigestsListPresenter() {
         return digestsListPresenter;
     }
-
-
-    //==============================================================================================
-    // Lifecycle owners
-    //==============================================================================================
-
-    public DigestsListPresenter getDigestsListObserver() {
-        return digestsListPresenter;
-    }
 }

@@ -1,6 +1,9 @@
 package ru.webanimal.academy_lessons.ui.digestsList;
 
+import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -17,31 +20,79 @@ import ru.webanimal.academy_lessons.utils.Application;
 
 public class DigestsListPresenter implements LifecycleObserver, IDigestsListPresenter {
 
-    // TODO (Sergio): add life cycle in the presenter
-    // TODO (Sergio): bind/unbind a view
+    //==============================================================================================
+    // Fields
+    //==============================================================================================
 
-    // TODO (Sergio): clear in onPause()
     private final CompositeDisposable disposables = new CompositeDisposable();
+    private boolean isCreated;
 
 
-    public void prepareDigests() {
+    //==============================================================================================
+    // LifecycleObserver callbacks
+    //==============================================================================================
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
+    private void checkIfCreated(LifecycleOwner source, Lifecycle.Event event) {
+        Lifecycle.State state = source.getLifecycle().getCurrentState();
+        switch (state) {
+            case CREATED:
+            case STARTED:
+            case RESUMED:
+                isCreated = true;
+                break;
+
+            case DESTROYED:
+            case INITIALIZED:
+                isCreated = false;
+                break;
+        }
     }
 
-    public List<DigestItem> getDigests() {
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    private void clearDisposables() {
+        disposables.clear();
+    }
+
+
+    //==============================================================================================
+    // IDigestsListPresenter callbacks
+    //==============================================================================================
+
+    @Override
+    public void prepareDigests() {
         List<DigestItem> digests = new ArrayList<>();
 
         Disposable d = Application.provides().interactors().getDigestInteractor().getDigests()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .map(data -> {
+                    doSomeWork()
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(someWorkResult -> {
+                                Log.d("tag", "Success. Did some computation work");
+
+                            }, e -> {
+                                Log.d("tag", "Error. Tried to do some computation work");
+                                e.printStackTrace();
+                            });
+
+                    return data;
+                })
                 .subscribe(digests::addAll, throwable -> Log.e("tag", throwable.getMessage()));
 
-        disposables.add(d);
+        // TODO (Sergio): add a callback from here to the IDigestsListView.onUpdateDataSet(digests)
+        // isCreated ? send a callback : else nothing
 
-        return digests;
+        disposables.add(d);
     }
 
-    public Observable<String> doSomeWork() {
+
+    //==============================================================================================
+    // Private methods
+    //==============================================================================================
+
+    private Observable<String> doSomeWork() {
         return Observable
                 .fromCallable(TestWork::doWork)
                 .subscribeOn(Schedulers.computation());
