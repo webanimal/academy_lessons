@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.ui.digestsList;
+package ru.webanimal.academy_lessons.ui.digests;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

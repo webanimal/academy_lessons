@@ -10,7 +10,7 @@
     app:cardCornerRadius="@dimen/layout_digest_corner_radius"
     app:cardElevation="@dimen/layout_digest_elevation"
     app:cardBackgroundColor="@color/colorDigestBack"
-    tools:context=".ui.digestsList.DigestsListActivity" >
+    tools:context=".ui.digests.DigestsActivity" >
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

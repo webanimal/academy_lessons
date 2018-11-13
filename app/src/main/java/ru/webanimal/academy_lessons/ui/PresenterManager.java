@@ -1,18 +1,18 @@
 package ru.webanimal.academy_lessons.ui;
 
-import ru.webanimal.academy_lessons.ui.digestsList.DigestsListPresenter;
-import ru.webanimal.academy_lessons.ui.digestsList.IDigestsListPresenter;
+import ru.webanimal.academy_lessons.ui.digests.DigestsPresenter;
+import ru.webanimal.academy_lessons.ui.digests.IDigestsPresenter;
 
-public class BaseController {
+public class PresenterManager {
 
     //==============================================================================================
     // Static
     //==============================================================================================
 
-    private static BaseController instance;
-    public static BaseController get() {
+    private static PresenterManager instance;
+    public static PresenterManager get() {
         if (instance == null) {
-            instance = new BaseController();
+            instance = new PresenterManager();
         }
 
         return instance;
@@ -23,23 +23,23 @@ public class BaseController {
     // Fields
     //==============================================================================================
 
-    private final DigestsListPresenter digestsListPresenter;
+    private final DigestsPresenter digestsPresenter;
 
 
     //==============================================================================================
     // Constructor
     //==============================================================================================
 
-    private BaseController() {
-        this.digestsListPresenter = new DigestsListPresenter();
+    private PresenterManager() {
+        this.digestsPresenter = new DigestsPresenter();
     }
 
 
     //==============================================================================================
-    // Presenter getters
+    // Getters and Setters
     //==============================================================================================
 
-    public IDigestsListPresenter getDigestsListPresenter() {
-        return digestsListPresenter;
+    public IDigestsPresenter digestsListPresenter() {
+        return digestsPresenter;
     }
 }

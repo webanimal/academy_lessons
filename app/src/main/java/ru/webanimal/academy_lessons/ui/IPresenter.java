@@ -3,7 +3,7 @@ package ru.webanimal.academy_lessons.ui;
 import android.arch.lifecycle.LifecycleObserver;
 
 /**
- * Marker interface
+ * Marker interface with LifeCycleObserver
  */
-public interface IBasePresenter extends LifecycleObserver {
+public interface IPresenter extends LifecycleObserver {
 }

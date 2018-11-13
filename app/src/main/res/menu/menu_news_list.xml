@@ -2,7 +2,7 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.digestsList.DigestsListActivity">
+    tools:context=".ui.digests.DigestsActivity">
 
     <item
         android:id="@+id/action_about"

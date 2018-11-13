@@ -6,9 +6,21 @@ import ru.webanimal.academy_lessons.utils.Application;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected BaseController controller() {
-        return Application.provides().controller();
+    protected PresenterManager controller() {
+        return Application.provides().presenters();
     }
 
-    protected abstract IBasePresenter getPresenter();
+    /**
+     * Provides access to a presenter's commands.
+     * Also, this presenter is a lifecycle observer.
+     * Obtain the presenter from a {@link #controller()}
+     */
+    protected abstract IPresenter getPresenter();
+
+    /**
+     * This method is intended to standardize binding process of a view to a presenter.
+     *
+     * Set lifecycle observer & data presenter here.
+     */
+    protected abstract void bindView();
 }

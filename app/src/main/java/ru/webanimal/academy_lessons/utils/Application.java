@@ -3,8 +3,8 @@ package ru.webanimal.academy_lessons.utils;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
-import ru.webanimal.academy_lessons.business.Interactors;
-import ru.webanimal.academy_lessons.ui.BaseController;
+import ru.webanimal.academy_lessons.business.InteractorManager;
+import ru.webanimal.academy_lessons.ui.PresenterManager;
 
 public class Application extends MultiDexApplication {
 
@@ -21,7 +21,6 @@ public class Application extends MultiDexApplication {
 
     public Application() {
         super();
-
         sInstance = this;
     }
 
@@ -30,19 +29,19 @@ public class Application extends MultiDexApplication {
     // Getters and Setters
     //==============================================================================================
 
-    public static Application provides() {
-        return sInstance;
-    }
-
     public Context context() {
         return provides();
     }
 
-    public Interactors interactors() {
-        return Interactors.get();
+    public static Application provides() {
+        return sInstance;
     }
 
-    public BaseController controller() {
-        return BaseController.get();
+    public InteractorManager interactors() {
+        return InteractorManager.get();
+    }
+
+    public PresenterManager presenters() {
+        return PresenterManager.get();
     }
 }

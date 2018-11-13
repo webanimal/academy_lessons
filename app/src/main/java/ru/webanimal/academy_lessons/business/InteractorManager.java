@@ -1,15 +1,18 @@
 package ru.webanimal.academy_lessons.business;
 
-public class Interactors {
+import ru.webanimal.academy_lessons.business.digests.DigestsInteractorImpl;
+import ru.webanimal.academy_lessons.business.digests.IDigestsInteractor;
+
+public class InteractorManager {
 
     //==============================================================================================
     // Static
     //==============================================================================================
 
-    private static Interactors instance;
-    public static Interactors get() {
+    private static InteractorManager instance;
+    public static InteractorManager get() {
         if (instance == null) {
-            instance = new Interactors();
+            instance = new InteractorManager();
         }
 
         return instance;
@@ -20,15 +23,15 @@ public class Interactors {
     // Fields
     //==============================================================================================
 
-    private final DigestInteractorImpl digestInteractor;
+    private final IDigestsInteractor digestsInteractor;
 
 
     //==============================================================================================
     // Constructor
     //==============================================================================================
 
-    private Interactors() {
-        this.digestInteractor = new DigestInteractorImpl();
+    private InteractorManager() {
+        this.digestsInteractor = new DigestsInteractorImpl();
     }
 
 
@@ -36,7 +39,7 @@ public class Interactors {
     // Getters and Setters
     //==============================================================================================
 
-    public DigestInteractorImpl getDigestInteractor() {
-        return digestInteractor;
+    public IDigestsInteractor digestsInteractor() {
+        return digestsInteractor;
     }
 }

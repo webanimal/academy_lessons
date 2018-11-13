@@ -1,6 +1,5 @@
-package ru.webanimal.academy_lessons.ui.digestsList;
+package ru.webanimal.academy_lessons.ui.digests;
 
-import android.arch.lifecycle.LifecycleOwner;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,12 +17,13 @@ import ru.webanimal.academy_lessons.ui.BaseActivity;
 import ru.webanimal.academy_lessons.ui.about.AboutActivity;
 import ru.webanimal.academy_lessons.utils.DisplayUtils;
 
-public class DigestsListActivity extends BaseActivity implements LifecycleOwner, IDigestsListView {
+public class DigestsActivity extends BaseActivity implements IDigestsView {
 
     //==============================================================================================
     // Static
     //==============================================================================================
 
+    private final static int LAYOUT_DIGESTS_LIST = R.layout.activity_digests_list;
     private final static int GRID_LAYOUT_COLUMNS = 2;
 
 
@@ -32,6 +32,12 @@ public class DigestsListActivity extends BaseActivity implements LifecycleOwner,
     //==============================================================================================
 
     private RecyclerView contentRecycler;
+
+
+    //==============================================================================================
+    // Fields
+    //==============================================================================================
+
     private DigestsAdapter adapter;
 
 
@@ -42,14 +48,11 @@ public class DigestsListActivity extends BaseActivity implements LifecycleOwner,
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getLifecycle().addObserver(getPresenter()); // SetObserver
+        setContentView(LAYOUT_DIGESTS_LIST);
 
-        setContentView(R.layout.activity_digests_list);
-        setSupportActionBar(findViewById(R.id.toolbar));
-        setTitle(getString(R.string.activity_digests_list_title));
-
-        initView();
-        initData();
+        bindView();
+        setupUI();
+        getPresenter().loadData();
     }
 
     @Override
@@ -71,7 +74,7 @@ public class DigestsListActivity extends BaseActivity implements LifecycleOwner,
 
 
     //==============================================================================================
-    // IDigestsListView callbacks
+    // IDigestsView callbacks
     //==============================================================================================
 
     @Override
@@ -86,8 +89,14 @@ public class DigestsListActivity extends BaseActivity implements LifecycleOwner,
     //==============================================================================================
 
     @Override
-    protected IDigestsListPresenter getPresenter() {
-        return controller().getDigestsListPresenter();
+    protected void bindView() {
+        getLifecycle().addObserver(getPresenter());
+        getPresenter().bindView(this);
+    }
+
+    @Override
+    protected IDigestsPresenter getPresenter() {
+        return controller().digestsListPresenter();
     }
 
 
@@ -95,15 +104,21 @@ public class DigestsListActivity extends BaseActivity implements LifecycleOwner,
     // Private methods
     //==============================================================================================
 
-    private void initView() {
+    private void setupUI() {
+        setupTitle();
+        setupRecycler();
+    }
+
+    private void setupTitle() {
+        setSupportActionBar(findViewById(R.id.toolbar));
+        setTitle(getString(R.string.activity_digests_list_title));
+    }
+
+    private void setupRecycler() {
         adapter = new DigestsAdapter();
         contentRecycler = findViewById(R.id.contentRecycler);
         contentRecycler.setLayoutManager(getLayoutManager());
         contentRecycler.setAdapter(adapter);
-    }
-
-    private void initData() {
-        getPresenter().prepareDigests();
     }
 
     private RecyclerView.LayoutManager getLayoutManager() {
