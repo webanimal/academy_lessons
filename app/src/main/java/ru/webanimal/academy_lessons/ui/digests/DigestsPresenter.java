@@ -30,7 +30,6 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
     @Override
     public void loadData() {
         Disposable d = Application.provides().interactors().digestsInteractor().getDigests()
-                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(data -> {
                     if (hasView()) {

@@ -1,11 +1,8 @@
 package ru.webanimal.academy_lessons.data;
 
-import android.util.Log;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import ru.webanimal.academy_lessons.data.models.DigestItem;
@@ -20,24 +17,12 @@ public class DigestsRepositoryImpl implements IDigestsRepository {
     public Single<List<DigestItem>> getDigests() {
         return Single
                 .just(DataUtils.generateNews())
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.computation())
                 .delay(MOCK_DELAY, TimeUnit.MICROSECONDS)
                 .map(data -> {
-                    doSomeWork()
-                            .subscribe(someWorkResult -> {
-                                Log.d("tag", "Success. Did some computation work");
-
-                            }, e -> {
-                                Log.d("tag", "Error. Tried to do some computation work");
-                                e.printStackTrace();
-                            });
-
+                    TestWork.doWork();
                     return data;
                 });
-    }
-
-    private Observable<String> doSomeWork() {
-        return Observable
-                .fromCallable(TestWork::doWork)
-                .subscribeOn(Schedulers.computation());
     }
 }
