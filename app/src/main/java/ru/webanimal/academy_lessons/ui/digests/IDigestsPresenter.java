@@ -9,5 +9,7 @@ public interface IDigestsPresenter extends IPresenter {
      */
     void bindView(IDigestsView viewImpl);
 
+    void loadInitialData();
+
     void loadData();
 }

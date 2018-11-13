@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.data;
+package ru.webanimal.academy_lessons.data.digests;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -12,6 +12,13 @@ import ru.webanimal.academy_lessons.utils.DataUtils;
 public class DigestsRepositoryImpl implements IDigestsRepository {
 
     private final static int MOCK_DELAY = 3000; // millis
+
+    @Override
+    public Single<List<DigestItem>> getInitial() {
+        return Single
+                .just(DataUtils.generateInitial())
+                .subscribeOn(Schedulers.io());
+    }
 
     @Override
     public Single<List<DigestItem>> getDigests() {

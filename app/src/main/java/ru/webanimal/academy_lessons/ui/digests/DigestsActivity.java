@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.webanimal.academy_lessons.R;
@@ -119,6 +120,7 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
         contentRecycler = findViewById(R.id.contentRecycler);
         contentRecycler.setLayoutManager(getLayoutManager());
         contentRecycler.setAdapter(adapter);
+        getPresenter().loadInitialData();
     }
 
     private RecyclerView.LayoutManager getLayoutManager() {
@@ -126,4 +128,6 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
                 ? new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                 : new GridLayoutManager(this, GRID_LAYOUT_COLUMNS);
     }
+
+    // TODO (Sergio): add loading state
 }

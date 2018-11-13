@@ -7,5 +7,7 @@ import ru.webanimal.academy_lessons.data.models.DigestItem;
 
 public interface IDigestsInteractor {
 
+    Single<List<DigestItem>> getInitial();
+
     Single<List<DigestItem>> getDigests();
 }

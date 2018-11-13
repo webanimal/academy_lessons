@@ -28,6 +28,21 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
     }
 
     @Override
+    public void loadInitialData() {
+        Disposable d = Application.provides().interactors().digestsInteractor().getInitial()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(data -> {
+                    if (hasView()) {
+                        viewImpl.onUpdateDataSet(data);
+                    }
+                }, throwable -> {
+                    Log.e("tag", throwable.getMessage());
+                });
+
+        addDisposable(d);
+    }
+
+    @Override
     public void loadData() {
         Disposable d = Application.provides().interactors().digestsInteractor().getDigests()
                 .observeOn(AndroidSchedulers.mainThread())
