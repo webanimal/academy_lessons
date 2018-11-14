@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ru.webanimal.academy_lessons.R;
@@ -26,13 +25,6 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
 
     private final static int LAYOUT_DIGESTS_LIST = R.layout.activity_digests_list;
     private final static int GRID_LAYOUT_COLUMNS = 2;
-
-
-    //==============================================================================================
-    // Widgets
-    //==============================================================================================
-
-    private RecyclerView contentRecycler;
 
 
     //==============================================================================================
@@ -97,7 +89,7 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
 
     @Override
     protected IDigestsPresenter getPresenter() {
-        return controller().digestsListPresenter();
+        return manager().digests();
     }
 
 
@@ -117,10 +109,9 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
 
     private void setupRecycler() {
         adapter = new DigestsAdapter();
-        contentRecycler = findViewById(R.id.contentRecycler);
+        RecyclerView contentRecycler = findViewById(R.id.contentRecycler);
         contentRecycler.setLayoutManager(getLayoutManager());
         contentRecycler.setAdapter(adapter);
-        getPresenter().loadInitialData();
     }
 
     private RecyclerView.LayoutManager getLayoutManager() {

@@ -2,12 +2,12 @@ package ru.webanimal.academy_lessons.data.digests;
 
 import java.util.List;
 
-import io.reactivex.Single;
+import io.reactivex.Observable;
 import ru.webanimal.academy_lessons.data.models.DigestItem;
 
 public interface IDigestsRepository {
 
-    Single<List<DigestItem>> getInitial();
+    Observable<List<DigestItem>> getInitial();
 
-    Single<List<DigestItem>> getDigests();
+    Observable<List<DigestItem>> getDigests();
 }
