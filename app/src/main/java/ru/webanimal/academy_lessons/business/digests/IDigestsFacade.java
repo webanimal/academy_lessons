@@ -5,9 +5,7 @@ import java.util.List;
 import io.reactivex.Observable;
 import ru.webanimal.academy_lessons.data.models.DigestItem;
 
-public interface IDigestsInteractor {
+public interface IDigestsFacade {
 
-    Observable<List<DigestItem>> getInitial();
-
-    Observable<List<DigestItem>> getDigests();
+    Observable<List<DigestItem>> data();
 }

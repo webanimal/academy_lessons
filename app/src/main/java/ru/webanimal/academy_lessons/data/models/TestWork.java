@@ -7,7 +7,7 @@ public class TestWork {
     public static String doWork() {
         try {
             for (int i = 0; i < 10; i++) {
-                Thread.sleep(500);
+                Thread.sleep(100);
                 Log.d("tag", "do work #" + i);
             }
             return "Thread COMPLETED";

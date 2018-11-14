@@ -1,7 +1,7 @@
 package ru.webanimal.academy_lessons.business;
 
-import ru.webanimal.academy_lessons.business.digests.DigestsInteractorImpl;
-import ru.webanimal.academy_lessons.business.digests.IDigestsInteractor;
+import ru.webanimal.academy_lessons.business.digests.DigestsFacadeImpl;
+import ru.webanimal.academy_lessons.business.digests.IDigestsFacade;
 
 public class InteractorManager {
 
@@ -23,7 +23,7 @@ public class InteractorManager {
     // Fields
     //==============================================================================================
 
-    private final IDigestsInteractor digestsInteractor;
+    private final IDigestsFacade digestsFacade;
 
 
     //==============================================================================================
@@ -31,7 +31,7 @@ public class InteractorManager {
     //==============================================================================================
 
     private InteractorManager() {
-        this.digestsInteractor = new DigestsInteractorImpl();
+        this.digestsFacade = new DigestsFacadeImpl();
     }
 
 
@@ -39,7 +39,7 @@ public class InteractorManager {
     // Getters and Setters
     //==============================================================================================
 
-    public IDigestsInteractor digestsInteractor() {
-        return digestsInteractor;
+    public IDigestsFacade digests() {
+        return digestsFacade;
     }
 }

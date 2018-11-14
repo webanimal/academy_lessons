@@ -39,7 +39,7 @@ public class PresenterManager {
     // Getters and Setters
     //==============================================================================================
 
-    public IDigestsPresenter digestsListPresenter() {
+    public IDigestsPresenter digests() {
         return digestsPresenter;
     }
 }
