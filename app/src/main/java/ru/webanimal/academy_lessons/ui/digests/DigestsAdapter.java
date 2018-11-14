@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.ui.adapters;
+package ru.webanimal.academy_lessons.ui.digests;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,34 +7,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.webanimal.academy_lessons.R;
 import ru.webanimal.academy_lessons.data.models.DigestItem;
-import ru.webanimal.academy_lessons.ui.DigestActivity;
+import ru.webanimal.academy_lessons.ui.digest.DigestActivity;
 import ru.webanimal.academy_lessons.utils.DateTimeUtils;
 
-public class DigestAdapter extends RecyclerView.Adapter<DigestAdapter.ViewHolder> {
+public class DigestsAdapter extends RecyclerView.Adapter<DigestsViewHolder> {
+
+    //==============================================================================================
+    // Static
+    //==============================================================================================
+
+    private static final int LAYOUT_DIGEST_ITEM =  R.layout.layout_digest;
+
 
     //==============================================================================================
     // Fields
     //==============================================================================================
 
-    private final List<DigestItem> digests;
-
-
-    //==============================================================================================
-    // Constructor
-    //==============================================================================================
-
-    public DigestAdapter(List<DigestItem> digests) {
-        this.digests = digests;
-    }
+    private final List<DigestItem> digests = new ArrayList<>();
 
 
     //==============================================================================================
@@ -43,12 +41,14 @@ public class DigestAdapter extends RecyclerView.Adapter<DigestAdapter.ViewHolder
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_digest, parent, false));
+    public DigestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new DigestsViewHolder(
+                LayoutInflater.from(parent.getContext())
+                        .inflate(LAYOUT_DIGEST_ITEM, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DigestsViewHolder holder, int position) {
         bindHolder(holder, position);
     }
 
@@ -59,10 +59,19 @@ public class DigestAdapter extends RecyclerView.Adapter<DigestAdapter.ViewHolder
 
 
     //==============================================================================================
+    // Public methods
+    //==============================================================================================
+    public void setData(@NonNull List<DigestItem> dataSet) {
+        digests.clear();
+        digests.addAll(dataSet);
+    }
+
+
+    //==============================================================================================
     // Private methods
     //==============================================================================================
 
-    private void bindHolder(ViewHolder holder, int position) {
+    private void bindHolder(DigestsViewHolder holder, int position) {
         DigestItem item = digests.get(position);
         holder.digestCategory.setText(item.getCategory().getName());
         holder.digestTitle.setText(item.getTitle());
@@ -71,12 +80,13 @@ public class DigestAdapter extends RecyclerView.Adapter<DigestAdapter.ViewHolder
 
         loadImage(holder.digestImage, item.getImageUrl());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DigestActivity.startDigestActivity(v.getContext(), item);
-            }
-        });
+        holder.itemView.setOnClickListener(
+                getItemCount() > 1 ? new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DigestActivity.startDigestActivity(v.getContext(), item);
+                    }
+                } : null);
     }
 
     private void loadImage(ImageView view, String url) {
@@ -85,30 +95,6 @@ public class DigestAdapter extends RecyclerView.Adapter<DigestAdapter.ViewHolder
                     .load(url)
                     .apply(new RequestOptions().fitCenter().placeholder(R.drawable.ic_img_loading))
                     .into(view);
-        }
-    }
-
-
-    //==============================================================================================
-    // Inner classes
-    //==============================================================================================
-
-    class ViewHolder extends RecyclerView.ViewHolder {
-
-        final TextView digestCategory;
-        final TextView digestTitle;
-        final TextView digestText;
-        final TextView digestDate;
-        final ImageView digestImage;
-
-        ViewHolder(View itemView) {
-            super(itemView);
-
-            digestCategory = itemView.findViewById(R.id.digestCategory);
-            digestTitle = itemView.findViewById(R.id.digestTitle);
-            digestText = itemView.findViewById(R.id.digestText);
-            digestDate = itemView.findViewById(R.id.digestDate);
-            digestImage = itemView.findViewById(R.id.digestImage);
         }
     }
 }

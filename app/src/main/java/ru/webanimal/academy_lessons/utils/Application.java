@@ -3,34 +3,45 @@ package ru.webanimal.academy_lessons.utils;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
-import ru.webanimal.academy_lessons.data.DigestRepositoryImpl;
+import ru.webanimal.academy_lessons.business.InteractorManager;
+import ru.webanimal.academy_lessons.ui.PresenterManager;
 
 public class Application extends MultiDexApplication {
 
+    //==============================================================================================
+    // Fields
+    //==============================================================================================
+
     private static Application sInstance;
-    private DigestRepositoryImpl repository;
+
+
+    //==============================================================================================
+    // Constructor
+    //==============================================================================================
 
     public Application() {
         super();
         sInstance = this;
     }
 
-    public static Application getApp() {
+
+    //==============================================================================================
+    // Getters and Setters
+    //==============================================================================================
+
+    public Context context() {
+        return provides();
+    }
+
+    public static Application provides() {
         return sInstance;
     }
 
-    public static Context getContext() {
-        return getApp();
+    public InteractorManager interactors() {
+        return InteractorManager.get();
     }
 
-    public DigestRepositoryImpl getRepository() {
-        return repository;
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        repository = new DigestRepositoryImpl();
+    public PresenterManager presenters() {
+        return PresenterManager.get();
     }
 }

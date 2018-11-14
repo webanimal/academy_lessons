@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".ui.DigestListActivity">
+    tools:context=".ui.digests.DigestsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbarLayout"
@@ -41,7 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_space_vertical_small"
-                android:nestedScrollingEnabled="false" />
+                android:nestedScrollingEnabled="false"
+                />
 
         </android.support.constraint.ConstraintLayout>
 

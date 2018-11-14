@@ -157,6 +157,21 @@ public class DataUtils {
         return news;
     }
 
+    public static List<DigestItem> generateInitial() {
+        Date date = new Date();
+        final Category initial = new Category(1, "...");
+        List<DigestItem> news = new ArrayList<>();
+        news.add(new DigestItem(
+                "Surfing",
+                "",
+                initial,
+                createDate(2018, 12, 31, 23, 59),
+                "for a best news",
+                "for a best news ever"
+        ));
+        return news;
+    }
+
     private static Date createDate(int year, int month, int date, int hrs, int min) {
         return new GregorianCalendar(year, month - 1, date, hrs, min).getTime();
     }
