@@ -22,9 +22,9 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
     //==============================================================================================
 
     @Override
-    public void bindView(IDigestsView viewImpl) {
-        this.viewImpl = viewImpl;
-        setView(viewImpl);
+    public void bindView(IDigestsView digestsViewImpl) {
+        this.viewImpl = digestsViewImpl;
+        setView(digestsViewImpl);
     }
 
     @Override
