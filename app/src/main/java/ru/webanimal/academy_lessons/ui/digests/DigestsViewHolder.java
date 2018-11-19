@@ -66,7 +66,7 @@ public class DigestsViewHolder extends RecyclerView.ViewHolder {
     // Public methods
     //==============================================================================================
 
-    public void bindItem(DigestItem item, boolean clickable) {
+    public void bindItem(DigestItem item, boolean isSingleItemClickable) {
         digestCategory.setText(item.getCategory().getName());
         digestTitle.setText(item.getTitle());
         digestText.setText(item.getPreviewText());
@@ -74,7 +74,7 @@ public class DigestsViewHolder extends RecyclerView.ViewHolder {
 
         loadImage(digestImage, item.getImageUrl());
 
-        itemView.setOnClickListener(clickable
+        itemView.setOnClickListener(isSingleItemClickable
                 ? new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
