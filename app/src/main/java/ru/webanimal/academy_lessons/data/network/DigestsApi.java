@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * BASE_URL builder:
  * http://api.nytimes.com/svc/topstories/v2/{section}.{response-format}?api-key={your-api-key}
  */
-public final class RestApi {
+public final class DigestsApi {
 
     //==============================================================================================
     // Static
@@ -61,10 +61,10 @@ public final class RestApi {
     private static final int TIMEOUT_IN_SECOND_READ = 2; // In second
     private static final int TIMEOUT_IN_SECOND_WRITE = 2; // In second
 
-    private static RestApi instance;
+    private static DigestsApi instance;
 
-    public static synchronized RestApi getInstance() {
-        if (instance == null) instance = new RestApi();
+    public static synchronized DigestsApi getInstance() {
+        if (instance == null) instance = new DigestsApi();
 
         return instance;
     }
@@ -81,13 +81,11 @@ public final class RestApi {
     // Constructor
     //==============================================================================================
 
-    private RestApi() {
+    private DigestsApi() {
         final OkHttpClient httpClient = buildHttpClient();
         final Retrofit retrofitClient = buildRetrofitClient(httpClient);
 
         //init endpoints here. It's can be more then one endpoint
-        // FIXME (Sergio): add a "digests" endpoint creation here from retrofit.
-        // Where to get a category list?
         digestsApi = retrofitClient.create(IDigestsEndPoint.class);
     }
 
@@ -98,6 +96,20 @@ public final class RestApi {
 
     public IDigestsEndPoint getDigestsApi() {
         return digestsApi;
+    }
+
+    // TODO (Sergio): remove from here this and the "categories" array
+    public String getCategory(int position) {
+        int length = CATEGORIES.length;
+        int pos = position;
+        if (pos < 0) {
+            pos = 0;
+        }
+        if (pos >= length) {
+            pos = length - 1;
+        }
+
+        return CATEGORIES[pos];
     }
 
 
