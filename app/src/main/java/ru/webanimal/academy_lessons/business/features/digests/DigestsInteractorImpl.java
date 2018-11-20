@@ -3,6 +3,7 @@ package ru.webanimal.academy_lessons.business.features.digests;
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -46,10 +47,10 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
         List<DigestItem> result = new ArrayList<>();
 
         if (results != null) {
-            for (DigestDTO dto : results.getDigests()) {
+            for (DigestDTO dto : Arrays.asList(results.getDigests())) {
                 DigestItem uio = new DigestItem(
                         dto.getTitle(),
-                        dto.getMultimediaDTO().get(0).getUrl(),
+                        dto.getMultimediaDTO()[0].getUrl(),
                         new Category(Categories.idFor(dto.getCategory()), dto.getCategory()),
                         dto.getDate(),
                         dto.getShortText(),

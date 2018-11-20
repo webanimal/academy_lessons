@@ -23,7 +23,7 @@ public class DigestDTO {
     String date;
 
     @SerializedName("multimedia")
-    List<MultimediaDTO> multimediaDTO;
+    MultimediaDTO[] multimediaDTO;
 
     public String getCategory() {
         return category;
@@ -45,7 +45,7 @@ public class DigestDTO {
         return date;
     }
 
-    public List<MultimediaDTO> getMultimediaDTO() {
+    public MultimediaDTO[] getMultimediaDTO() {
         return multimediaDTO;
     }
 }

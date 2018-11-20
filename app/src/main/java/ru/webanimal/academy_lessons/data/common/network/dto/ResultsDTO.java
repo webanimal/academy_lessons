@@ -7,9 +7,9 @@ import java.util.List;
 public class ResultsDTO {
 
     @SerializedName("results")
-    List<DigestDTO> digests;
+    DigestDTO[] digests;
 
-    public List<DigestDTO> getDigests() {
+    public DigestDTO[] getDigests() {
         return digests;
     }
 }
