@@ -42,7 +42,26 @@ public class DigestDTO {
         return date;
     }
 
+    /**
+     * 0 - Standard Thumbnail
+     * 1 - thumbLarge
+     * 2 - Normal
+     * 3 - mediumThreeByTwo210
+     * 4 - superJumbo
+     *
+     * @return
+     */
     public MultimediaDTO[] getMultimediaDTO() {
         return multimediaDTO;
+    }
+
+    @Override
+    public String toString() {
+        return "category:" + category
+                + ", title:" + title
+                + ", shortText:" + shortText
+                + ", date:" + date
+                + ", image desc:" + multimediaDTO[2].description
+                + ", image url:" + multimediaDTO[2].url;
     }
 }

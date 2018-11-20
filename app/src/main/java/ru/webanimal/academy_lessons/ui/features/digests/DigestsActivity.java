@@ -45,6 +45,11 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
 
         bindView();
         setupUI();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         getPresenter().loadData();
     }
 

@@ -35,7 +35,7 @@ public class DigestsAdapter extends RecyclerView.Adapter<DigestsViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull DigestsViewHolder holder, int position) {
         Log.d("tag", "onBindViewHolder position: " + position);
-        holder.bindItem(getItem(position), isClickable());
+        holder.bindItem(getItem(position));
     }
 
     @Override
@@ -59,10 +59,5 @@ public class DigestsAdapter extends RecyclerView.Adapter<DigestsViewHolder> {
 
     private DigestItem getItem(int position) {
         return digests.get(position);
-    }
-
-    // TODO (Sergio): remove after normal networking
-    private boolean isClickable() {
-        return getItemCount() > 1;
     }
 }

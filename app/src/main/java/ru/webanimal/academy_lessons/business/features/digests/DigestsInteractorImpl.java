@@ -1,6 +1,7 @@
 package ru.webanimal.academy_lessons.business.features.digests;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,10 +48,13 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
         List<DigestItem> digests = new ArrayList<>();
 
         if (results != null) {
+            Log.d("tag", "test !!! " + results.getDigests().toString());
+
             for (DigestDTO dto : Arrays.asList(results.getDigests())) {
                 DigestItem uio = new DigestItem(
                         dto.getTitle(),
-                        dto.getMultimediaDTO()[0].getUrl(),
+                        // TODO (Sergio): add check if empty
+                        dto.getMultimediaDTO()[2].getUrl(),
                         new Category(Categories.idFor(dto.getCategory()), dto.getCategory()),
                         dto.getDate(),
                         dto.getShortText(),

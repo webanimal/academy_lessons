@@ -19,8 +19,6 @@ public class DigestsRepositoryImpl implements IDigestsRepository {
     @Override
     public Observable<List<DigestItem>> getDigests() {
         return Observable
-                .just(DataUtils.generateNews())
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.computation());
+                .just(DataUtils.generateNews());
     }
 }
