@@ -11,7 +11,14 @@ import ru.webanimal.academy_lessons.data.common.network.dto.DigestDTO;
 
 public interface IDigestsEndPoint {
 
+    /**
+     * Makes a http GET call.
+     * Please select a category
+     *
+     * @param category
+     * @return
+     */
     @NonNull
     @GET("{details}.json")
-    Single<List<DigestDTO>> digests(@Path("details") String category);
+    Single<List<DigestDTO>> call(@Path("details") String category);
 }

@@ -1,6 +1,7 @@
 package ru.webanimal.academy_lessons.data.common.network;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +11,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ru.webanimal.academy_lessons.data.features.digests.network.IDigestsEndPoint;
+import ru.webanimal.academy_lessons.data.features.digests.network.IDigestsRestApi;
 
 /**
  * See:
@@ -21,7 +23,7 @@ import ru.webanimal.academy_lessons.data.features.digests.network.IDigestsEndPoi
  * BASE_URL builder:
  * http://api.nytimes.com/svc/topstories/v2/{section}.{response-format}?api-key={your-api-key}
  */
-public class NetworkManager {
+public class NetworkManager implements IDigestsRestApi {
 
     //==============================================================================================
     // Static
@@ -30,34 +32,6 @@ public class NetworkManager {
     private static final String PARAM_API_KEY = "api-key";
     private static final String API_KEY = "104dda80956345a3a551415dde722147";
     private static final String BASE_URL = "http://api.nytimes.com/svc/topstories/v2/";
-    private static final String[] CATEGORIES = new String[] {
-            "home",
-            "opinion",
-            "world",
-            "national",
-            "politics",
-            "upshot",
-            "nyregion",
-            "business",
-            "technology",
-            "science",
-            "health",
-            "sports",
-            "arts",
-            "books",
-            "movies",
-            "theater",
-            "sundayreview",
-            "fashion",
-            "tmagazine",
-            "food",
-            "travel",
-            "magazine",
-            "realestate",
-            "automobiles",
-            "obituaries",
-            "insider"
-    };
 
     private static final int TIMEOUT_IN_SECOND_CONNECTION = 2; // In second
     private static final int TIMEOUT_IN_SECOND_READ = 2; // In second
@@ -77,30 +51,23 @@ public class NetworkManager {
     // Fields
     //==============================================================================================
 
-    private IDigestsEndPoint digestsApi;
+    private IDigestsEndPoint digestsRestApi;
 
 
     //==============================================================================================
-    // Public methods
+    // Rest APIs callbacks
     //==============================================================================================
 
-    // TODO: to use
-    public IDigestsEndPoint getDigestsApi() {
-        return digestsApi;
-    }
-
-    // TODO (Sergio): remove from here this and the "categories" array
-    public String getCategory(int position) {
-        int length = CATEGORIES.length;
-        int pos = position;
-        if (pos < 0) {
-            pos = 0;
-        }
-        if (pos >= length) {
-            pos = length - 1;
-        }
-
-        return CATEGORIES[pos];
+    /**
+     * An instance of the IDigestsEndPoint which may produce http GET calls.
+     *
+     * @return a source which produces Observables with a List<DigestDTO>.
+     * See also {@link IDigestsEndPoint#call(String)}
+     */
+    @NonNull
+    @Override
+    public IDigestsEndPoint digestsRestApi() {
+        return digestsRestApi;
     }
 
 
@@ -109,26 +76,26 @@ public class NetworkManager {
     //==============================================================================================
 
     private NetworkManager() {
+        Log.d("tag","test !!! called");
         final OkHttpClient httpClient = buildHttpClient();
         final Retrofit retrofitClient = buildRetrofitClient(httpClient);
 
         //init endpoints here. It's can be more then one endpoint
-        digestsApi = retrofitClient.create(IDigestsEndPoint.class);
+        digestsRestApi = retrofitClient.create(IDigestsEndPoint.class);
         /*
         // Add a disposable collection
-        digestsApi.digests("")
+        digestsRestApi.call("")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
                     // handle the response
                 }, e -> {
-                    Log.e("tag", "digestsApi error");
+                    Log.e("tag", "digestsRestApi error");
                     e.printStackTrace();
                     // handle errors
                 });
         * */
     }
-
 
 
     //==============================================================================================

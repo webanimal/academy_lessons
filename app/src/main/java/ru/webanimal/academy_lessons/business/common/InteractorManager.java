@@ -1,5 +1,7 @@
 package ru.webanimal.academy_lessons.business.common;
 
+import android.support.annotation.NonNull;
+
 import ru.webanimal.academy_lessons.business.features.digests.DigestsFacadeImpl;
 import ru.webanimal.academy_lessons.business.features.digests.IDigestsFacade;
 
@@ -39,6 +41,7 @@ public class InteractorManager {
     // Getters and Setters
     //==============================================================================================
 
+    @NonNull
     public IDigestsFacade digests() {
         return digestsFacade;
     }

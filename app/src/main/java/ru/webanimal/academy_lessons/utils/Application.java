@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
 import ru.webanimal.academy_lessons.business.common.InteractorManager;
+import ru.webanimal.academy_lessons.data.common.network.NetworkManager;
 import ru.webanimal.academy_lessons.ui.common.PresenterManager;
 
 public class Application extends MultiDexApplication {
@@ -37,11 +38,15 @@ public class Application extends MultiDexApplication {
         return sInstance;
     }
 
+    public PresenterManager presenters() {
+        return PresenterManager.get();
+    }
+
     public InteractorManager interactors() {
         return InteractorManager.get();
     }
 
-    public PresenterManager presenters() {
-        return PresenterManager.get();
+    public NetworkManager network() {
+        return NetworkManager.get();
     }
 }

@@ -1,5 +1,7 @@
 package ru.webanimal.academy_lessons.ui.common;
 
+import android.support.annotation.NonNull;
+
 import ru.webanimal.academy_lessons.ui.features.digests.DigestsPresenter;
 import ru.webanimal.academy_lessons.ui.features.digests.IDigestsPresenter;
 
@@ -39,6 +41,7 @@ public class PresenterManager {
     // Getters and Setters
     //==============================================================================================
 
+    @NonNull
     public IDigestsPresenter digests() {
         return digestsPresenter;
     }
