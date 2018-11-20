@@ -1,6 +1,7 @@
 package ru.webanimal.academy_lessons.utils;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.multidex.MultiDexApplication;
 
 import ru.webanimal.academy_lessons.business.common.InteractorManager;
@@ -10,10 +11,24 @@ import ru.webanimal.academy_lessons.ui.common.PresenterManager;
 public class Application extends MultiDexApplication {
 
     //==============================================================================================
-    // Fields
+    // Static
     //==============================================================================================
 
     private static Application sInstance;
+
+    @NonNull
+    public static Application provides() {
+        return sInstance;
+    }
+
+
+    //==============================================================================================
+    // Fields
+    //==============================================================================================
+
+    private final PresenterManager presenterManager;
+    private final InteractorManager interactorManager;
+    private final NetworkManager networkManager;
 
 
     //==============================================================================================
@@ -23,6 +38,11 @@ public class Application extends MultiDexApplication {
     public Application() {
         super();
         sInstance = this;
+
+        // final fields
+        presenterManager = PresenterManager.get();
+        interactorManager = InteractorManager.get();
+        networkManager = NetworkManager.get();
     }
 
 
@@ -30,23 +50,23 @@ public class Application extends MultiDexApplication {
     // Getters and Setters
     //==============================================================================================
 
+    @NonNull
     public Context context() {
         return provides();
     }
 
-    public static Application provides() {
-        return sInstance;
-    }
-
+    @NonNull
     public PresenterManager presenters() {
-        return PresenterManager.get();
+        return presenterManager;
     }
 
+    @NonNull
     public InteractorManager interactors() {
-        return InteractorManager.get();
+        return interactorManager;
     }
 
+    @NonNull
     public NetworkManager network() {
-        return NetworkManager.get();
+        return networkManager;
     }
 }
