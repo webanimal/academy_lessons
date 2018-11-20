@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.digests.DigestsActivity">
+        <activity android:name=".ui.features.digests.DigestsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -22,12 +22,12 @@
         </activity>
 
         <activity
-            android:name=".ui.about.AboutActivity"
-            android:parentActivityName=".ui.digests.DigestsActivity" />
+            android:name=".ui.features.about.AboutActivity"
+            android:parentActivityName=".ui.features.digests.DigestsActivity" />
         
         <activity
-            android:name=".ui.digest.DigestActivity"
-            android:parentActivityName=".ui.digests.DigestsActivity" />
+            android:name=".ui.features.digest.DigestActivity"
+            android:parentActivityName=".ui.features.digests.DigestsActivity" />
 
     </application>
 

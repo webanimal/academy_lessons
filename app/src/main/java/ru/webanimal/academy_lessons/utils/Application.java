@@ -3,8 +3,8 @@ package ru.webanimal.academy_lessons.utils;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
-import ru.webanimal.academy_lessons.business.InteractorManager;
-import ru.webanimal.academy_lessons.ui.PresenterManager;
+import ru.webanimal.academy_lessons.business.common.InteractorManager;
+import ru.webanimal.academy_lessons.ui.common.PresenterManager;
 
 public class Application extends MultiDexApplication {
 
