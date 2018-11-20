@@ -67,7 +67,7 @@ public class Application extends MultiDexApplication {
     }
 
     @NonNull
-    public IDataManager dataFrom() {
+    public IDataManager data() {
         return dataManager;
     }
 }

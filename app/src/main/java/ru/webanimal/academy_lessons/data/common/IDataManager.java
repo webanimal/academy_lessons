@@ -7,5 +7,5 @@ import ru.webanimal.academy_lessons.data.common.network.NetworkManager;
 public interface IDataManager {
 
     @NonNull
-    NetworkManager network();
+    NetworkManager fromNetwork();
 }

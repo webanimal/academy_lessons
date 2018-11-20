@@ -27,10 +27,10 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
         return new DigestsRepositoryImpl().getDigests();
     }
 
-    // room or network
+    // room or fromNetwork
     @Override
     public Observable<List<DigestItem>> getDigests() {
-        return Application.provides().dataFrom().network()
+        return Application.provides().data().fromNetwork()
                 .digestsRestApi()
                 .call(Categories.at(23))
                 .flatMap(response -> Observable.just(fromDTO(response.getData())));
@@ -44,7 +44,7 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
     @NonNull
     private List<DigestItem> fromDTO(ResultsDTO results) {
         // List<DigestDTO> response
-        List<DigestItem> result = new ArrayList<>();
+        List<DigestItem> digests = new ArrayList<>();
 
         if (results != null) {
             for (DigestDTO dto : Arrays.asList(results.getDigests())) {
@@ -56,10 +56,10 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
                         dto.getShortText(),
                         dto.getFullText()
                 );
-                result.add(uio);
+                digests.add(uio);
             }
         }
 
-        return result;
+        return digests;
     }
 }

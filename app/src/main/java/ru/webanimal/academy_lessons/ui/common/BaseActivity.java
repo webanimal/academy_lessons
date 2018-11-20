@@ -20,7 +20,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * This method is intended to standardize binding process of a view to a presenter.
      *
-     * Set lifecycle observer & dataFrom presenter here.
+     * Set lifecycle observer & data presenter here.
      */
     protected abstract void bindView();
 }

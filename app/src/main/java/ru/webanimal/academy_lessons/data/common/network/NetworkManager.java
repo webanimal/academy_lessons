@@ -63,19 +63,6 @@ public class NetworkManager implements IDigestsRestApi {
 
         //init endpoints here. It's can be more then one endpoint
         digestsRestApi = retrofitClient.create(IDigestsEndPoint.class);
-        /*
-        // Add a disposable collection
-        digestsRestApi.call("")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> {
-                    // handle the response
-                }, e -> {
-                    Log.e("tag", "digestsRestApi error");
-                    e.printStackTrace();
-                    // handle errors
-                });
-        * */
     }
 
 

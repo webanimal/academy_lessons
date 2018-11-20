@@ -15,10 +15,6 @@ public class DigestDTO {
     @SerializedName("abstract")
     String shortText;
 
-    // TODO (Sergio): Is a full text available??
-    @SerializedName("abstract")
-    String fullText;
-
     @SerializedName("published_date")
     String date;
 
@@ -37,8 +33,9 @@ public class DigestDTO {
         return shortText;
     }
 
+    // Is there a full text available??
     public String getFullText() {
-        return fullText;
+        return shortText;
     }
 
     public String getDate() {

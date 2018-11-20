@@ -28,6 +28,19 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
 
     @Override
     public void loadData() {
+        /*
+        // Add a disposable collection
+        digestsRestApi.call("")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> {
+                    // handle the response
+                }, e -> {
+                    Log.e("tag", "digestsRestApi error");
+                    e.printStackTrace();
+                    // handle errors
+                });
+        * */
         Disposable d = Application.provides().interactors().digests().data()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(data -> {

@@ -41,7 +41,7 @@ public class DataManagerImpl implements IDataManager {
     //==============================================================================================
 
     @NonNull
-    public NetworkManager network() {
+    public NetworkManager fromNetwork() {
         return networkManager;
     }
 }
