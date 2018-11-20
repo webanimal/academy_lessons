@@ -5,7 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.multidex.MultiDexApplication;
 
 import ru.webanimal.academy_lessons.business.common.InteractorManager;
-import ru.webanimal.academy_lessons.data.common.network.NetworkManager;
+import ru.webanimal.academy_lessons.data.common.DataManagerImpl;
+import ru.webanimal.academy_lessons.data.common.IDataManager;
 import ru.webanimal.academy_lessons.ui.common.PresenterManager;
 
 public class Application extends MultiDexApplication {
@@ -28,7 +29,7 @@ public class Application extends MultiDexApplication {
 
     private final PresenterManager presenterManager;
     private final InteractorManager interactorManager;
-    private final NetworkManager networkManager;
+    private final DataManagerImpl dataManager;
 
 
     //==============================================================================================
@@ -42,7 +43,7 @@ public class Application extends MultiDexApplication {
         // final fields
         presenterManager = PresenterManager.get();
         interactorManager = InteractorManager.get();
-        networkManager = NetworkManager.get();
+        dataManager = DataManagerImpl.get();
     }
 
 
@@ -66,7 +67,7 @@ public class Application extends MultiDexApplication {
     }
 
     @NonNull
-    public NetworkManager network() {
-        return networkManager;
+    public IDataManager dataFrom() {
+        return dataManager;
     }
 }

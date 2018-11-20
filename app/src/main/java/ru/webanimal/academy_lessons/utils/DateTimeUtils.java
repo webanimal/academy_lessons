@@ -1,6 +1,9 @@
 package ru.webanimal.academy_lessons.utils;
 
+import android.text.format.DateFormat;
+
 import java.text.DateFormatSymbols;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -8,6 +11,17 @@ import java.util.Locale;
 public class DateTimeUtils {
 
     private static final long HOURS_IN_DAY = 24;
+
+    public static Date getDateFromString(String dateAsString) {
+        Date date;
+        try {
+            date = DateFormat.getDateFormat(Application.provides().context()).parse(dateAsString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            date = new Date();
+        }
+        return date;
+    }
 
     public static String getPublishedDateAsFormattedString(Date date) {
         long diff = (System.currentTimeMillis() - date.getTime()) / (60 * 60 * 1000);

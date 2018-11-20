@@ -123,11 +123,11 @@ public class DataUtils {
                         + "which works on penetrating target computer networks for the US intelligence community.\n\n"
                         + "While employed by the NSA between 2010 and 2015, Pho took home what prosecutors described as \"massive "
                         + "troves of highly classified national defence information\" and stored those troves on his home computer "
-                        + "network.\n\n"
+                        + "dataFrom.\n\n"
                         + "Reports have alleged that while these tools were stored on his home computer, Pho installed Kaspersky "
                         + "Lab anti-virus software, which Russian intelligence then used to steal those tools for themselves.\n\n"
                         + "Although the company has vigorously denied claims its software was used by Russian intelligence to steal"
-                        + " the data, the publicity damage has left Kaspersky Lab working to address customer fears in a global "
+                        + " the dataFrom, the publicity damage has left Kaspersky Lab working to address customer fears in a global "
                         + "transparency initiative - including moving a significant portion of its operations from Russia to "
                         + "Switzerland.\n\n"
                         + "An internal investigation at the cyber security company into the incident prompted the company to suggest"
@@ -154,21 +154,6 @@ public class DataUtils {
                         + "were Goodnight Girl and Love Is All Around.\""
         ));
 
-        return news;
-    }
-
-    public static List<DigestItem> generateInitial() {
-        Date date = new Date();
-        final Category initial = new Category(1, "...");
-        List<DigestItem> news = new ArrayList<>();
-        news.add(new DigestItem(
-                "Surfing",
-                "",
-                initial,
-                createDate(2018, 12, 31, 23, 59),
-                "for a best news",
-                "for a best news ever"
-        ));
         return news;
     }
 

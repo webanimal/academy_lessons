@@ -24,7 +24,17 @@ public class DigestItem implements Serializable {
         this.fullText = fullText;
         this.publishDate = publishDate;
         this.imageUrl = imageUrl;
+        this.categoryName = this.category.getName();
+        this.dateName = DateTimeUtils.getPublishedDateAsFormattedString(this.publishDate);
+    }
 
+    public DigestItem(String title, String imageUrl, Category category, String publishDate, String previewText, String fullText) {
+        this.category = category;
+        this.title = title;
+        this.previewText = previewText;
+        this.fullText = fullText;
+        this.publishDate = DateTimeUtils.getDateFromString(publishDate);
+        this.imageUrl = imageUrl;
         this.categoryName = this.category.getName();
         this.dateName = DateTimeUtils.getPublishedDateAsFormattedString(this.publishDate);
     }

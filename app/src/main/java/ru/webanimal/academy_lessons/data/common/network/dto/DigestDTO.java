@@ -22,9 +22,30 @@ public class DigestDTO {
     @SerializedName("published_date")
     String date;
 
-    @SerializedName("url")
-    String url;
-
     @SerializedName("multimedia")
     List<MultimediaDTO> multimediaDTO;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getShortText() {
+        return shortText;
+    }
+
+    public String getFullText() {
+        return fullText;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public List<MultimediaDTO> getMultimediaDTO() {
+        return multimediaDTO;
+    }
 }

@@ -9,4 +9,12 @@ public class MultimediaDTO {
 
     @SerializedName("caption")
     String description;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

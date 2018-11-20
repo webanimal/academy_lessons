@@ -11,26 +11,16 @@ import ru.webanimal.academy_lessons.utils.DataUtils;
 
 public class DigestsRepositoryImpl implements IDigestsRepository {
 
-    private final static int MOCK_DELAY = 2000; // millis
+    //==============================================================================================
+    // IDigestsRepository callbacks
+    //==============================================================================================
 
-
-    @Override
-    public Observable<List<DigestItem>> getInitial() {
-        return Observable
-                .just(DataUtils.generateInitial())
-                .subscribeOn(Schedulers.io());
-    }
-
+    // From ROOM. Not implemented yet.
     @Override
     public Observable<List<DigestItem>> getDigests() {
         return Observable
                 .just(DataUtils.generateNews())
                 .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.computation())
-                .delay(MOCK_DELAY, TimeUnit.MICROSECONDS)
-                .map(data -> {
-                    TestWork.doWork();
-                    return data;
-                });
+                .observeOn(Schedulers.computation());
     }
 }

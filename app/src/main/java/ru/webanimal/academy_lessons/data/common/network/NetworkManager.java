@@ -1,7 +1,6 @@
 package ru.webanimal.academy_lessons.data.common.network;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,7 +37,7 @@ public class NetworkManager implements IDigestsRestApi {
     private static final int TIMEOUT_IN_SECOND_WRITE = 2; // In second
 
     private static NetworkManager instance;
-    public static NetworkManager get() {
+    public static synchronized NetworkManager get() {
         if (instance == null) {
             instance = new NetworkManager();
         }
@@ -55,28 +54,10 @@ public class NetworkManager implements IDigestsRestApi {
 
 
     //==============================================================================================
-    // Rest APIs callbacks
-    //==============================================================================================
-
-    /**
-     * An instance of the IDigestsEndPoint which may produce http GET calls.
-     *
-     * @return a source which produces Observables with a List<DigestDTO>.
-     * See also {@link IDigestsEndPoint#call(String)}
-     */
-    @NonNull
-    @Override
-    public IDigestsEndPoint digestsRestApi() {
-        return digestsRestApi;
-    }
-
-
-    //==============================================================================================
     // Constructor
     //==============================================================================================
 
     private NetworkManager() {
-        Log.d("tag","test !!! called");
         final OkHttpClient httpClient = buildHttpClient();
         final Retrofit retrofitClient = buildRetrofitClient(httpClient);
 
@@ -95,6 +76,23 @@ public class NetworkManager implements IDigestsRestApi {
                     // handle errors
                 });
         * */
+    }
+
+
+    //==============================================================================================
+    // Rest APIs callbacks
+    //==============================================================================================
+
+    /**
+     * An instance of the IDigestsEndPoint which may produce http GET calls.
+     *
+     * @return a source which produces Observables with a List<DigestDTO>.
+     * See also {@link IDigestsEndPoint#call(String)}
+     */
+    @NonNull
+    @Override
+    public IDigestsEndPoint digestsRestApi() {
+        return digestsRestApi;
     }
 
 
