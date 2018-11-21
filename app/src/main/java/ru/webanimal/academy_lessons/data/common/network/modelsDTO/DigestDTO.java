@@ -1,6 +1,9 @@
 package ru.webanimal.academy_lessons.data.common.network.modelsDTO;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class DigestDTO {
 
@@ -14,19 +17,24 @@ public class DigestDTO {
     public final int DEFAULT_MULTIMEDIA_DTO_FORMAT = 2;
 
     @SerializedName("subsection")
-    String category;
+    @Expose
+    private String category;
 
     @SerializedName("title")
-    String title;
+    @Expose
+    private String title;
 
     @SerializedName("abstract")
-    String shortText;
+    @Expose
+    private String shortText;
 
     @SerializedName("published_date")
-    String date;
+    @Expose
+    private String date;
 
     @SerializedName("multimedia")
-    MultimediaDTO[] multimediaDTO;
+    @Expose
+    private List<MultimediaDTO> multimediaDTO;
 
     public String getCategory() {
         return category;
@@ -49,7 +57,7 @@ public class DigestDTO {
         return date;
     }
 
-    public MultimediaDTO[] getMultimediaDTO() {
+    public List<MultimediaDTO> getMultimediaDTO() {
         return multimediaDTO;
     }
 
@@ -59,7 +67,7 @@ public class DigestDTO {
                 + ", title:" + title
                 + ", shortText:" + shortText
                 + ", date:" + date
-                + ", image desc:" + multimediaDTO[DEFAULT_MULTIMEDIA_DTO_FORMAT].description
-                + ", image url:" + multimediaDTO[DEFAULT_MULTIMEDIA_DTO_FORMAT].url;
+                + ", image desc:" + multimediaDTO.get(DEFAULT_MULTIMEDIA_DTO_FORMAT).description
+                + ", image url:" + multimediaDTO.get(DEFAULT_MULTIMEDIA_DTO_FORMAT).url;
     }
 }
