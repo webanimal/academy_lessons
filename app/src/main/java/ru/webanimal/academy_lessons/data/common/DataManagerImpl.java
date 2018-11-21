@@ -11,7 +11,7 @@ public class DataManagerImpl implements IDataManager {
     //==============================================================================================
 
     private static DataManagerImpl instance;
-    public static synchronized DataManagerImpl get() {
+    public static DataManagerImpl get() {
         if (instance == null) {
             instance = new DataManagerImpl();
         }

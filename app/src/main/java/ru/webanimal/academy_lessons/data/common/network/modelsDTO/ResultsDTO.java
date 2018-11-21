@@ -9,9 +9,13 @@ public class ResultsDTO {
 
     @SerializedName("results")
     @Expose
-    List<DigestDTO> digests;
+    private List<DigestDTO> results = null;
 
-    public List<DigestDTO> getDigests() {
-        return digests;
+    public List<DigestDTO> getResults() {
+        return this.results;
+    }
+
+    public void setResults(List<DigestDTO> results) {
+        this.results = results;
     }
 }

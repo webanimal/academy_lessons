@@ -90,14 +90,14 @@ public class NetworkManager implements IDigestsResults {
     @NonNull
     private OkHttpClient buildHttpClient() {
         final HttpLoggingInterceptor networkLoggingInterceptor = new HttpLoggingInterceptor();
-        networkLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        networkLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
 
         return new OkHttpClient.Builder()
                 .addInterceptor(ApiKeyInterceptor.create(PARAM_API_KEY, API_KEY))
                 .addInterceptor(networkLoggingInterceptor)
                 .connectTimeout(TIMEOUT_IN_SECOND_CONNECTION, TimeUnit.SECONDS)
-                .readTimeout(TIMEOUT_IN_SECOND_READ, TimeUnit.SECONDS)
                 .writeTimeout(TIMEOUT_IN_SECOND_WRITE, TimeUnit.SECONDS)
+                .readTimeout(TIMEOUT_IN_SECOND_READ, TimeUnit.SECONDS)
                 .build();
     }
 

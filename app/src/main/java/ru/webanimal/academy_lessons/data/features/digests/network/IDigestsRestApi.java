@@ -17,9 +17,9 @@ public interface IDigestsRestApi {
      *
      * @param category a String to indicate what kind of getDigestsInteractor we have to download.
      *                 See {@link Categories#CATEGORIES}
-     * @return a ReactiveX Observable with List<DigestDTO>
+     * @return a ReactiveX Single with BaseResponse<ResultsDTO>
      */
     @NonNull
     @GET("{details}.json")
-    Single<BaseResponse<ResultsDTO>> call(@Path("details") String category);
+    Single<BaseResponse<ResultsDTO>> call(@Path("details") @NonNull String category);
 }

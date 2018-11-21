@@ -37,6 +37,7 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
                 // TODO (Sergio): pass here a category type from the UI
                 .call(Categories.at(Categories.DEFAULT_CATEGORY))
                 .map(this::fromDTO);
+        // TODO (Sergio): how to handle errors here and what i have to send further
     }
 
 
@@ -46,19 +47,19 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
 
     @NonNull
     private List<DigestItem> fromDTO(BaseResponse<ResultsDTO> response) {
-        Log.d("tag", "test !!! fromDTO() response:" + response);
+        Log.d("tag", "test !!! fromDTO() BaseResponse<ResultsDTO>:" + response);
 
         ResultsDTO result = null;
         if (response != null) {
             result = response.getData();
         }
-        Log.d("tag", "test !!! fromDTO() result:" + result);
+        Log.d("tag", "test !!! fromDTO() ResultsDTO:" + result);
 
         List<DigestItem> digests = new ArrayList<>();
         if (result != null) {
-            Log.d("tag", "test !!! results:" + result.getDigests());
+            Log.d("tag", "test !!! fromDTO() List<DigestDTO>:" + result.getResults());
 
-            for (DigestDTO dto : result.getDigests()) {
+            for (DigestDTO dto : result.getResults()) {
                 DigestItem uio = new DigestItem(
                         dto.getTitle(),
                         // TODO (Sergio): add check if empty
