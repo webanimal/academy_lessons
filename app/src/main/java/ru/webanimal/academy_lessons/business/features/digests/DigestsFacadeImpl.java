@@ -2,7 +2,7 @@ package ru.webanimal.academy_lessons.business.features.digests;
 
 import java.util.List;
 
-import io.reactivex.Observable;
+import io.reactivex.Single;
 import ru.webanimal.academy_lessons.ui.common.modelsUI.DigestItem;
 
 public class DigestsFacadeImpl implements IDigestsFacade {
@@ -19,8 +19,9 @@ public class DigestsFacadeImpl implements IDigestsFacade {
     //==============================================================================================
 
     @Override
-    public Observable<List<DigestItem>> data() {
-        return getInteractor().getDigests().startWith(getInteractor().getInitial());
+    public Single<List<DigestItem>> getDigests() {
+        // TODO (Sergio): add here a data source selector (DB, Network)
+        return getInteractor().fromNetwork();
     }
 
 

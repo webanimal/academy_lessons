@@ -1,12 +1,9 @@
 package ru.webanimal.academy_lessons.data.features.digests.mock;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.Single;
 import ru.webanimal.academy_lessons.ui.common.modelsUI.DigestItem;
-import ru.webanimal.academy_lessons.data.common.mock.TestWork;
 import ru.webanimal.academy_lessons.utils.DataUtils;
 
 public class DigestsRepositoryImpl implements IDigestsRepository {
@@ -17,8 +14,8 @@ public class DigestsRepositoryImpl implements IDigestsRepository {
 
     // From ROOM. Not implemented yet.
     @Override
-    public Observable<List<DigestItem>> getDigests() {
-        return Observable
+    public Single<List<DigestItem>> fromDB() {
+        return Single
                 .just(DataUtils.generateNews());
     }
 }

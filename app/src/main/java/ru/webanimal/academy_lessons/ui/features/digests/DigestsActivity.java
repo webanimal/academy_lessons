@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -77,6 +78,7 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
 
     @Override
     public void onUpdateDataSet(List<DigestItem> dataSet) {
+        Log.d("tag", "activity onUpdateDataSet()");
         adapter.setData(dataSet);
         adapter.notifyDataSetChanged();
     }

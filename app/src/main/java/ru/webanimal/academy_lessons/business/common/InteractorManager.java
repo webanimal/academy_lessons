@@ -42,7 +42,7 @@ public class InteractorManager {
     //==============================================================================================
 
     @NonNull
-    public IDigestsFacade digests() {
+    public IDigestsFacade getDigestsInteractor() {
         return digestsFacade;
     }
 }

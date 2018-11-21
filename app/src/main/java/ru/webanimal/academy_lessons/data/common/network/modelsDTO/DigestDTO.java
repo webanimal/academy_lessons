@@ -1,10 +1,17 @@
-package ru.webanimal.academy_lessons.data.common.network.dto;
+package ru.webanimal.academy_lessons.data.common.network.modelsDTO;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class DigestDTO {
+
+    /**
+     * 0 - Standard Thumbnail
+     * 1 - thumbLarge
+     * 2 - Normal
+     * 3 - mediumThreeByTwo210
+     * 4 - superJumbo
+     */
+    public final int DEFAULT_MULTIMEDIA_DTO_FORMAT = 2;
 
     @SerializedName("subsection")
     String category;
@@ -42,15 +49,6 @@ public class DigestDTO {
         return date;
     }
 
-    /**
-     * 0 - Standard Thumbnail
-     * 1 - thumbLarge
-     * 2 - Normal
-     * 3 - mediumThreeByTwo210
-     * 4 - superJumbo
-     *
-     * @return
-     */
     public MultimediaDTO[] getMultimediaDTO() {
         return multimediaDTO;
     }
@@ -61,7 +59,7 @@ public class DigestDTO {
                 + ", title:" + title
                 + ", shortText:" + shortText
                 + ", date:" + date
-                + ", image desc:" + multimediaDTO[2].description
-                + ", image url:" + multimediaDTO[2].url;
+                + ", image desc:" + multimediaDTO[DEFAULT_MULTIMEDIA_DTO_FORMAT].description
+                + ", image url:" + multimediaDTO[DEFAULT_MULTIMEDIA_DTO_FORMAT].url;
     }
 }

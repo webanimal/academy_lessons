@@ -55,7 +55,6 @@ public abstract class BasePresenter {
     @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
     private void onLifecycleChange(LifecycleOwner source, Lifecycle.Event event) {
         Lifecycle.State state = source.getLifecycle().getCurrentState();
-        Log.d("tag", "onLifecycleChange state:" + state);
         switch (state) {
             case CREATED:
             case STARTED:

@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Categories {
 
+    public static final int DEFAULT_CATEGORY = 23; // I.e. automobiles
+
     private static final String[] CATEGORIES = new String[] {
             "home",
             "opinion",

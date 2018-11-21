@@ -9,8 +9,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import ru.webanimal.academy_lessons.data.features.digests.network.IDigestsEndPoint;
 import ru.webanimal.academy_lessons.data.features.digests.network.IDigestsRestApi;
+import ru.webanimal.academy_lessons.data.features.digests.network.IDigestsResults;
 
 /**
  * See:
@@ -22,7 +22,7 @@ import ru.webanimal.academy_lessons.data.features.digests.network.IDigestsRestAp
  * BASE_URL builder:
  * http://api.nytimes.com/svc/topstories/v2/{section}.{response-format}?api-key={your-api-key}
  */
-public class NetworkManager implements IDigestsRestApi {
+public class NetworkManager implements IDigestsResults {
 
     //==============================================================================================
     // Static
@@ -50,7 +50,7 @@ public class NetworkManager implements IDigestsRestApi {
     // Fields
     //==============================================================================================
 
-    private IDigestsEndPoint digestsRestApi;
+    private IDigestsRestApi digestsRestApi;
 
 
     //==============================================================================================
@@ -62,7 +62,7 @@ public class NetworkManager implements IDigestsRestApi {
         final Retrofit retrofitClient = buildRetrofitClient(httpClient);
 
         //init endpoints here. It's can be more then one endpoint
-        digestsRestApi = retrofitClient.create(IDigestsEndPoint.class);
+        digestsRestApi = retrofitClient.create(IDigestsRestApi.class);
     }
 
 
@@ -71,14 +71,14 @@ public class NetworkManager implements IDigestsRestApi {
     //==============================================================================================
 
     /**
-     * An instance of the IDigestsEndPoint which may produce http GET calls.
+     * An instance of the IDigestsRestApi which may produce http GET calls.
      *
      * @return a source which produces Observables with a List<DigestDTO>.
-     * See also {@link IDigestsEndPoint#call(String)}
+     * See also {@link IDigestsRestApi#call(String)}
      */
     @NonNull
     @Override
-    public IDigestsEndPoint digestsRestApi() {
+    public IDigestsRestApi digestsRestApi() {
         return digestsRestApi;
     }
 
