@@ -59,10 +59,10 @@ public class NetworkManager implements IDigestsResults {
 
     private NetworkManager() {
         final OkHttpClient httpClient = buildHttpClient();
-        final Retrofit retrofitClient = buildRetrofitClient(httpClient);
+        final Retrofit retrofit = buildRetrofitClient(httpClient);
 
         //init endpoints here. It's can be more then one endpoint
-        digestsRestApi = retrofitClient.create(IDigestsRestApi.class);
+        digestsRestApi = retrofit.create(IDigestsRestApi.class);
     }
 
 
@@ -90,7 +90,8 @@ public class NetworkManager implements IDigestsResults {
     @NonNull
     private OkHttpClient buildHttpClient() {
         final HttpLoggingInterceptor networkLoggingInterceptor = new HttpLoggingInterceptor();
-        networkLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+//        networkLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        networkLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         return new OkHttpClient.Builder()
                 .addInterceptor(ApiKeyInterceptor.create(PARAM_API_KEY, API_KEY))
@@ -106,8 +107,8 @@ public class NetworkManager implements IDigestsResults {
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(httpClient)
-                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
 }

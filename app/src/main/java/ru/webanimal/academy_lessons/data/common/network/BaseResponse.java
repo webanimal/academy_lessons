@@ -4,7 +4,11 @@ import android.support.annotation.Nullable;
 
 public class BaseResponse<T> {
 
-    private T data;
+    private final T data;
+
+    public BaseResponse(T data) {
+        this.data = data;
+    }
 
     @Nullable
     public T getData() {

@@ -80,8 +80,8 @@ dependencies {
 
     // OkHttp
     implementation "com.squareup.retrofit2:retrofit:${retrofitLibVersion}"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofitLibVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${retrofitLibVersion}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofitLibVersion}"
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 
     // Glide

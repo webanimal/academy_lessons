@@ -18,23 +18,31 @@ public class DigestDTO {
 
     @SerializedName("subsection")
     @Expose
-    private String category;
+    private final String category;
 
     @SerializedName("title")
     @Expose
-    private String title;
+    private final String title;
 
     @SerializedName("abstract")
     @Expose
-    private String shortText;
+    private final String shortText;
 
     @SerializedName("published_date")
     @Expose
-    private String date;
+    private final String date;
 
     @SerializedName("multimedia")
     @Expose
-    private List<MultimediaDTO> multimediaDTO;
+    private final List<MultimediaDTO> multimediaDTO;
+
+    public DigestDTO(String category, String title, String shortText, String date, List<MultimediaDTO> multimediaDTO) {
+        this.category = category;
+        this.title = title;
+        this.shortText = shortText;
+        this.date = date;
+        this.multimediaDTO = multimediaDTO;
+    }
 
     public String getCategory() {
         return category;
@@ -67,7 +75,7 @@ public class DigestDTO {
                 + ", title:" + title
                 + ", shortText:" + shortText
                 + ", date:" + date
-                + ", image desc:" + multimediaDTO.get(DEFAULT_MULTIMEDIA_DTO_FORMAT).description
-                + ", image url:" + multimediaDTO.get(DEFAULT_MULTIMEDIA_DTO_FORMAT).url;
+                + ", image desc:" + multimediaDTO.get(DEFAULT_MULTIMEDIA_DTO_FORMAT).getCaption()
+                + ", image url:" + multimediaDTO.get(DEFAULT_MULTIMEDIA_DTO_FORMAT).getUrl();
     }
 }

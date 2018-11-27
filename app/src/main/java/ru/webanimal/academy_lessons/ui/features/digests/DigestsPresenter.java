@@ -35,6 +35,9 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
         final Disposable d = Application.provides().interactors().getDigestsInteractor()
                 .getDigests()
                 .subscribeOn(Schedulers.io())
+                .doOnNext(res -> {
+                    Log.d("tag", "test !!! presenter loadData() items:" + res);
+                })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::handleResponse, this::handleErrors);
 

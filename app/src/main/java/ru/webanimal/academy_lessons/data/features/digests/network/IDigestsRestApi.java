@@ -2,9 +2,12 @@ package ru.webanimal.academy_lessons.data.features.digests.network;
 
 import android.support.annotation.NonNull;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Path;
 import ru.webanimal.academy_lessons.data.common.network.BaseResponse;
 import ru.webanimal.academy_lessons.data.common.network.modelsDTO.ResultsDTO;
@@ -21,5 +24,7 @@ public interface IDigestsRestApi {
      */
     @NonNull
     @GET("{details}.json")
-    Single<BaseResponse<ResultsDTO>> call(@Path("details") @NonNull String category);
+    @Headers("Content-type: application/json")
+//    Observable<ResultsDTO> call(@Path("details") @NonNull String category);
+    Observable<BaseResponse<ResultsDTO>> call(@Path("details") @NonNull String category);
 }

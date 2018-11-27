@@ -6,7 +6,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Single;
+import io.reactivex.Observable;
 import ru.webanimal.academy_lessons.data.common.network.BaseResponse;
 import ru.webanimal.academy_lessons.data.common.network.modelsDTO.DigestDTO;
 import ru.webanimal.academy_lessons.data.common.network.modelsDTO.ResultsDTO;
@@ -24,14 +24,14 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
 
     // fromDB
     @Override
-    public Single<List<DigestItem>> fromDB() {
+    public Observable<List<DigestItem>> fromDB() {
         // FIXME (Sergio): not implemented yet
         return new DigestsRepositoryImpl().fromDB();
     }
 
     // fromNetwork
     @Override
-    public Single<List<DigestItem>> fromNetwork() {
+    public Observable<List<DigestItem>> fromNetwork() {
         return Application.provides().data().fromNetwork()
                 .digestsRestApi()
                 // TODO (Sergio): pass here a category type from the UI
@@ -46,20 +46,23 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
     //==============================================================================================
 
     @NonNull
-    private List<DigestItem> fromDTO(BaseResponse<ResultsDTO> response) {
-        Log.d("tag", "test !!! fromDTO() BaseResponse<ResultsDTO>:" + response);
+    private List<DigestItem> fromDTO(ResultsDTO response) {
+//        Log.d("tag", "test !!! fromDTO() BaseResponse<ResultsDTO>:" + response);
+        Log.d("tag", "test !!! fromDTO() ResultsDTO:" + response);
 
-        ResultsDTO result = null;
-        if (response != null) {
-            result = response.getData();
-        }
-        Log.d("tag", "test !!! fromDTO() ResultsDTO:" + result);
+//        ResultsDTO result = null;
+//        if (response != null) {
+//            result = response.getData();
+//        }
+//        Log.d("tag", "test !!! fromDTO() ResultsDTO:" + result);
 
         List<DigestItem> digests = new ArrayList<>();
-        if (result != null) {
-            Log.d("tag", "test !!! fromDTO() List<DigestDTO>:" + result.getResults());
+//        if (result != null) {
+        if (response != null) {
+//            Log.d("tag", "test !!! fromDTO() List<DigestDTO>:" + result.getResults());
+            Log.d("tag", "test !!! fromDTO() List<DigestDTO>:" + response.getResults());
 
-            for (DigestDTO dto : result.getResults()) {
+            for (DigestDTO dto : response.getResults()) {
                 DigestItem uio = new DigestItem(
                         dto.getTitle(),
                         // TODO (Sergio): add check if empty

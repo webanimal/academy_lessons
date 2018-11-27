@@ -7,17 +7,22 @@ public class MultimediaDTO {
 
     @SerializedName("url")
     @Expose
-    String url;
+    private final String url;
 
     @SerializedName("caption")
     @Expose
-    String description;
+    private final String caption;
+
+    public MultimediaDTO(String url, String caption) {
+        this.url = url;
+        this.caption = caption;
+    }
 
     public String getUrl() {
         return url;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCaption() {
+        return caption;
     }
 }

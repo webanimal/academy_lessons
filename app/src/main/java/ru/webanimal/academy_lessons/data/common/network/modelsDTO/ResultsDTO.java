@@ -7,15 +7,22 @@ import java.util.List;
 
 public class ResultsDTO {
 
+    @SerializedName("status")
+    @Expose
+    private final String status;
+
     @SerializedName("results")
     @Expose
-    private List<DigestDTO> results = null;
+    private final List<DigestDTO> results;
+
+    public ResultsDTO(String status, List<DigestDTO> results) {
+        this.status = status;
+        this.results = results;
+    }
+
+    public String getStatus() { return this.status; }
 
     public List<DigestDTO> getResults() {
         return this.results;
-    }
-
-    public void setResults(List<DigestDTO> results) {
-        this.results = results;
     }
 }
