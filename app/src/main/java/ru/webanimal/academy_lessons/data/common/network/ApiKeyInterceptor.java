@@ -11,17 +11,36 @@ import okhttp3.Response;
 
 public class ApiKeyInterceptor implements Interceptor {
 
+    //==============================================================================================
+    // Static
+    //==============================================================================================
+
     public static Interceptor create(@NonNull String paramApiKey, @NonNull String apiKey) {
         return new ApiKeyInterceptor(paramApiKey, apiKey);
     }
 
+
+    //==============================================================================================
+    // Fields
+    //==============================================================================================
+
     private final String paramApiKey;
     private final String apiKey;
+
+
+    //==============================================================================================
+    // Constructor
+    //==============================================================================================
 
     private ApiKeyInterceptor(String paramApiKey, String apiKey) {
         this.paramApiKey = paramApiKey;
         this.apiKey = apiKey;
     }
+
+
+    //==============================================================================================
+    // Interceptor callbacks
+    //==============================================================================================
 
     @Override
     public Response intercept(@NonNull Chain chain) throws IOException {

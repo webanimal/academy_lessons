@@ -14,7 +14,7 @@ public class DigestDTO {
      * 3 - mediumThreeByTwo210
      * 4 - superJumbo
      */
-    public final int DEFAULT_MULTIMEDIA_DTO_FORMAT = 2;
+    public final int DEFAULT_MULTIMEDIA_DTO_FORMAT = 3;
 
     @SerializedName("subsection")
     @Expose

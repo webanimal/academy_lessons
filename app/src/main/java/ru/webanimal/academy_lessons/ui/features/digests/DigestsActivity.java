@@ -121,6 +121,9 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
     // Private methods
     //==============================================================================================
 
+    // TODO (Sergio): add loading states
+    // TODO (Sergio): add pull-to-refresh logic
+    // TODO (Sergio): add "categories from menu" selector
     private void setupUI() {
         setupTitle();
         setupRecycler();
@@ -143,6 +146,4 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
                 ? new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                 : new GridLayoutManager(this, GRID_LAYOUT_COLUMNS);
     }
-
-    // TODO (Sergio): add loading states
 }

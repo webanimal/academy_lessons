@@ -1,15 +1,13 @@
 package ru.webanimal.academy_lessons.business.features.digests;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.Single;
-import retrofit2.Response;
-import ru.webanimal.academy_lessons.data.common.network.BaseResponse;
 import ru.webanimal.academy_lessons.data.common.network.TwoPiecesContainer;
 import ru.webanimal.academy_lessons.data.common.network.modelsDTO.DigestDTO;
 import ru.webanimal.academy_lessons.data.common.network.modelsDTO.ResultsDTO;
@@ -48,12 +46,12 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
                         t = new BadDigestsResponseException();
                     }
 
-                    BaseResponse<ResultsDTO> r = response.body();
-                    if (r == null || r.getData() == null) {
+                    final ResultsDTO res = response.body();
+                    if (res == null || res.getResults() == null || res.getResults().size() == 0) {
                         t = new NoDigestsResponseException();
                     }
 
-                    return new TwoPiecesContainer<>(fromDTO(r), t);
+                    return new TwoPiecesContainer<>(fromDTO(res), t);
                 });
     }
 
@@ -63,27 +61,15 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
     //==============================================================================================
 
     @NonNull
-//    private List<DigestItem> fromDTO(ResultsDTO response) {
-    private List<DigestItem> fromDTO(BaseResponse<ResultsDTO> response) {
-        Log.d("tag", "test !!! fromDTO() BaseResponse<ResultsDTO>:" + response);
-//        Log.d("tag", "test !!! fromDTO() ResultsDTO:" + response);
-
-        ResultsDTO result = null;
-        if (response != null) {
-            result = response.getData();
-        }
-        Log.d("tag", "test !!! fromDTO() ResultsDTO:" + result);
-
+    private List<DigestItem> fromDTO(@Nullable ResultsDTO resultsDTO) {
+        Log.d("tag", "test !!! fromDTO() ResultsDTO:" + resultsDTO);
         List<DigestItem> digests = new ArrayList<>();
-        if (result != null) {
-//        if (response != null) {
-//            Log.d("tag", "test !!! fromDTO() List<DigestDTO>:" + result.getResults());
-            Log.d("tag", "test !!! fromDTO() List<DigestDTO>:" + result.getResults());
-
-            for (DigestDTO dto : result.getResults()) {
+        if (resultsDTO != null) {
+            Log.d("tag", "test !!! fromDTO() List<DigestDTO>:" + resultsDTO.getResults());
+            for (DigestDTO dto : resultsDTO.getResults()) {
                 DigestItem uio = new DigestItem(
                         dto.getTitle(),
-                        // TODO (Sergio): add check if empty
+                        // TODO (Sergio): add check if multimedia empty
                         dto.getMultimediaDTO().get(dto.DEFAULT_MULTIMEDIA_DTO_FORMAT).getUrl(),
                         new Category(Categories.idFor(dto.getCategory()), dto.getCategory()),
                         dto.getDate(),

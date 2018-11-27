@@ -1,7 +1,6 @@
 package ru.webanimal.academy_lessons.data.features.digests.network;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Categories {

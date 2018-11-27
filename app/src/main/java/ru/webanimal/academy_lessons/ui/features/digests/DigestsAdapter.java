@@ -28,13 +28,11 @@ public class DigestsAdapter extends RecyclerView.Adapter<DigestsViewHolder> {
     @NonNull
     @Override
     public DigestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.d("tag", "adapter onCreateViewHolder()");
         return DigestsViewHolder.create(parent, viewType, Glide.with(parent));
     }
 
     @Override
     public void onBindViewHolder(@NonNull DigestsViewHolder holder, int position) {
-        Log.d("tag", "adapter onBindViewHolder() position: " + position);
         holder.bindItem(getItem(position));
     }
 
@@ -50,7 +48,6 @@ public class DigestsAdapter extends RecyclerView.Adapter<DigestsViewHolder> {
     public void setData(@NonNull List<DigestItem> dataSet) {
         digests.clear();
         digests.addAll(dataSet);
-        Log.d("tag", "adapter setData() size: " + digests.size());
     }
 
 

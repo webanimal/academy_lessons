@@ -47,7 +47,6 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
 
     private void handleResponse(TwoPiecesContainer<List<DigestItem>> container) {
         Log.d("tag", "test !!! presenter handleResponse() items:" + container);
-
         if (container.getSecond() != null) {
             handleErrors(container.getSecond());
             return;
@@ -60,24 +59,25 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
         }
 
         if (hasView()) {
-            Log.d("tag", "test !!! presenter handleResponse() hasView items.size:" + items.size());
             viewImpl.onUpdateDataSet(items);
         }
     }
 
     private void handleErrors(Throwable t) {
-        // handle errors
         Log.e("tag", "test !!! presenter loadData() onError");
-        t.printStackTrace();
-
         if (hasView()) {
-            if (t instanceof BadDigestsResponseException || t instanceof UnknownException) {
-                viewImpl.onError(t.getMessage());
-            }
-
             if (t instanceof NoDigestsResponseException) {
                 viewImpl.onEmptyList(t.getMessage());
+                return;
             }
+
+            if (t instanceof BadDigestsResponseException || t instanceof UnknownException) {
+                viewImpl.onError(t.getMessage());
+                return;
+            }
+
+            // Any other exception
+            viewImpl.onError(t.getMessage());
         }
     }
 }
