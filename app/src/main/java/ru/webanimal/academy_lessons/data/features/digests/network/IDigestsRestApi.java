@@ -6,6 +6,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
+import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Path;
@@ -25,6 +26,7 @@ public interface IDigestsRestApi {
     @NonNull
     @GET("{details}.json")
     @Headers("Content-type: application/json")
-    Observable<ResultsDTO> call(@Path("details") @NonNull String category);
+//    Observable<ResultsDTO> call(@Path("details") @NonNull String category);
 //    Observable<BaseResponse<ResultsDTO>> call(@Path("details") @NonNull String category);
+    Observable<Response<BaseResponse<ResultsDTO>>> call(@Path("details") @NonNull String category);
 }

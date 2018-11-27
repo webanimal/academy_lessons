@@ -7,6 +7,10 @@ import java.util.List;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import ru.webanimal.academy_lessons.business.common.UnknownException;
+import ru.webanimal.academy_lessons.data.common.network.TwoPiecesContainer;
+import ru.webanimal.academy_lessons.data.features.digests.network.Errors.BadDigestsResponseException;
+import ru.webanimal.academy_lessons.data.features.digests.network.Errors.NoDigestsResponseException;
 import ru.webanimal.academy_lessons.ui.common.BasePresenter;
 import ru.webanimal.academy_lessons.ui.common.modelsUI.DigestItem;
 import ru.webanimal.academy_lessons.utils.Application;
@@ -35,20 +39,28 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
         final Disposable d = Application.provides().interactors().getDigestsInteractor()
                 .getDigests()
                 .subscribeOn(Schedulers.io())
-                .doOnNext(res -> {
-                    Log.d("tag", "test !!! presenter loadData() items:" + res);
-                })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::handleResponse, this::handleErrors);
 
         addDisposable(d);
     }
 
-    private void handleResponse(List<DigestItem> items) {
-        // handle the response
-        Log.d("tag", "test !!! presenter handleResponse() items:" + items);
+    private void handleResponse(TwoPiecesContainer<List<DigestItem>> container) {
+        Log.d("tag", "test !!! presenter handleResponse() items:" + container);
+
+        if (container.getSecond() != null) {
+            handleErrors(container.getSecond());
+            return;
+        }
+
+        List<DigestItem> items = container.getFirst();
+        if (items.size() == 0) {
+            handleErrors(new NoDigestsResponseException());
+            return;
+        }
+
         if (hasView()) {
-            Log.d("tag", "test !!! presenter handleResponse() hasView");
+            Log.d("tag", "test !!! presenter handleResponse() hasView items.size:" + items.size());
             viewImpl.onUpdateDataSet(items);
         }
     }
@@ -57,5 +69,15 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
         // handle errors
         Log.e("tag", "test !!! presenter loadData() onError");
         t.printStackTrace();
+
+        if (hasView()) {
+            if (t instanceof BadDigestsResponseException || t instanceof UnknownException) {
+                viewImpl.onError(t.getMessage());
+            }
+
+            if (t instanceof NoDigestsResponseException) {
+                viewImpl.onEmptyList(t.getMessage());
+            }
+        }
     }
 }

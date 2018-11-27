@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -83,6 +84,22 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
         adapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onError(String message) {
+        // stub
+        // TODO (Sergio): show error state
+        Log.d("tag", "onError() message:" + message);
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onEmptyList(String message) {
+        // stub
+        // TODO (Sergio): show empty state
+        Log.d("tag", "onEmptyList() message:" + message);
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
 
     //==============================================================================================
     // Protected methods
@@ -127,5 +144,5 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
                 : new GridLayoutManager(this, GRID_LAYOUT_COLUMNS);
     }
 
-    // TODO (Sergio): add loading state
+    // TODO (Sergio): add loading states
 }
