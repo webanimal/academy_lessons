@@ -25,6 +25,6 @@ public interface IDigestsRestApi {
     @NonNull
     @GET("{details}.json")
     @Headers("Content-type: application/json")
-//    Observable<ResultsDTO> call(@Path("details") @NonNull String category);
-    Observable<BaseResponse<ResultsDTO>> call(@Path("details") @NonNull String category);
+    Observable<ResultsDTO> call(@Path("details") @NonNull String category);
+//    Observable<BaseResponse<ResultsDTO>> call(@Path("details") @NonNull String category);
 }
