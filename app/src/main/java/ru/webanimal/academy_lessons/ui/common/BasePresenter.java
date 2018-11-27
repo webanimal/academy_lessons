@@ -8,6 +8,12 @@ import android.util.Log;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
+/**
+ * You have to bind Views to Presenter which implements IPresenter.
+ * Not to a BasePresenter class.
+ * Please, implement IPresenter interface into your current presenter class.
+ * See also {@link ru.webanimal.academy_lessons.ui.features.digests.IDigestsPresenter}
+ */
 public abstract class BasePresenter {
 
     //==============================================================================================
@@ -21,35 +27,7 @@ public abstract class BasePresenter {
 
 
     //==============================================================================================
-    // Protected methods
-    //==============================================================================================
-
-    protected void setView(IView viewImpl) {
-        this.viewImpl = viewImpl;
-    }
-
-    protected boolean hasView() {
-        return viewImpl != null && isReady;
-    }
-
-    protected void setReady(boolean state) {
-        Log.d("tag", "setReady:" + state);
-        this.isReady = state;
-    }
-
-    protected void addDisposable(Disposable d) {
-        disposables.add(d);
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    protected void clearDisposable() {
-        Log.d("tag", "clearDisposable onStop");
-        disposables.clear();
-    }
-
-
-    //==============================================================================================
-    // Abstract methods
+    // LifecycleObserver callbacks
     //==============================================================================================
 
     @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
@@ -69,5 +47,52 @@ public abstract class BasePresenter {
                 setReady(false);
                 break;
         }
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    private void clearDisposable() {
+        Log.d("tag", "clearDisposable onStop");
+        disposables.clear();
+    }
+
+
+    //==============================================================================================
+    // Protected methods
+    //==============================================================================================
+
+
+    /**
+     * BasePresenter method.
+     * Register a View into a Presenter here to control a View's LifeCycle.
+     */
+    protected void setView(IView viewImpl) {
+        this.viewImpl = viewImpl;
+    }
+
+    /**
+     * BasePresenter method.
+     * Check before call any method on a View.
+     */
+    protected boolean hasView() {
+        return viewImpl != null && isReady;
+    }
+
+    /**
+     * BasePresenter method.
+     * Utilize disposables here.
+     * @param d a Disposable instance
+     */
+    protected void addDisposable(Disposable d) {
+        disposables.add(d);
+    }
+
+
+    //==============================================================================================
+    // Private methods
+    //==============================================================================================
+
+    private void setReady(boolean state) {
+        Log.d("tag", "setReady:" + state);
+        this.isReady = state;
     }
 }

@@ -16,7 +16,7 @@ public class DigestDTO {
      */
     public final int DEFAULT_MULTIMEDIA_DTO_FORMAT = 3;
 
-    @SerializedName("subsection")
+    @SerializedName("section")
     @Expose
     private final String category;
 

@@ -14,9 +14,10 @@ import android.widget.Toast;
 import java.util.List;
 
 import ru.webanimal.academy_lessons.R;
-import ru.webanimal.academy_lessons.ui.common.modelsUI.DigestItem;
+import ru.webanimal.academy_lessons.ui.common.modelsUIO.DigestItem;
 import ru.webanimal.academy_lessons.ui.common.BaseActivity;
 import ru.webanimal.academy_lessons.ui.features.about.AboutActivity;
+import ru.webanimal.academy_lessons.ui.features.digests.adapter.DigestsAdapter;
 import ru.webanimal.academy_lessons.utils.DisplayUtils;
 
 public class DigestsActivity extends BaseActivity implements IDigestsView {
@@ -26,6 +27,7 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
     //==============================================================================================
 
     private final static int LAYOUT_DIGESTS_LIST = R.layout.activity_digests_list;
+    private final static int LAYOUT_MAIN_MENU = R.menu.menu_news_list;
     private final static int GRID_LAYOUT_COLUMNS = 2;
 
 
@@ -45,7 +47,7 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
         super.onCreate(savedInstanceState);
         setContentView(LAYOUT_DIGESTS_LIST);
 
-        bindView();
+        bindLifecycle();
         setupUI();
     }
 
@@ -57,7 +59,7 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_news_list, menu);
+        getMenuInflater().inflate(LAYOUT_MAIN_MENU, menu);
         return true;
     }
 
@@ -106,7 +108,7 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
     //==============================================================================================
 
     @Override
-    protected void bindView() {
+    protected void bindLifecycle() {
         getLifecycle().addObserver(getPresenter());
         getPresenter().bindView(this);
     }
@@ -136,9 +138,9 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
 
     private void setupRecycler() {
         adapter = new DigestsAdapter();
-        RecyclerView contentRecycler = findViewById(R.id.contentRecycler);
-        contentRecycler.setLayoutManager(getLayoutManager());
-        contentRecycler.setAdapter(adapter);
+        RecyclerView recycler = findViewById(R.id.contentRecycler);
+        recycler.setLayoutManager(getLayoutManager());
+        recycler.setAdapter(adapter);
     }
 
     private RecyclerView.LayoutManager getLayoutManager() {

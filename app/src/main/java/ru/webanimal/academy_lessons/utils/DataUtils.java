@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import ru.webanimal.academy_lessons.ui.common.modelsUI.Category;
-import ru.webanimal.academy_lessons.ui.common.modelsUI.DigestItem;
+import ru.webanimal.academy_lessons.ui.common.modelsUIO.Category;
+import ru.webanimal.academy_lessons.ui.common.modelsUIO.DigestItem;
 
 public class DataUtils {
 

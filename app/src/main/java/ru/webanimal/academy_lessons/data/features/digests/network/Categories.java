@@ -51,9 +51,8 @@ public class Categories {
     }
 
     public static int idFor(String proposedCategory) {
-        List<String> categories = Arrays.asList(CATEGORIES);
-        for (int i = 0; i < categories.size(); i++) {
-            if (categories.get(i).equalsIgnoreCase(proposedCategory)) {
+        for (int i = 0; i < CATEGORIES.length; i++) {
+            if (CATEGORIES[i].equalsIgnoreCase(proposedCategory)) {
                 return i;
             }
         }

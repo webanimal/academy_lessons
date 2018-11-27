@@ -1,7 +1,5 @@
 package ru.webanimal.academy_lessons.utils;
 
-import android.text.format.DateFormat;
-
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,9 +11,10 @@ public class DateTimeUtils {
     private static final long HOURS_IN_DAY = 24;
 
     public static Date getDateFromString(String dateAsString) {
+        // NY-Times: 2018-11-27T05:00:00-05:00
         Date date;
         try {
-            date = DateFormat.getDateFormat(Application.provides().context()).parse(dateAsString);
+            date = getUkToUtcFormatter().parse(dateAsString);
         } catch (ParseException e) {
             e.printStackTrace();
             date = new Date();
@@ -69,5 +68,9 @@ public class DateTimeUtils {
 
     private static SimpleDateFormat getDaysFormatter() {
         return new SimpleDateFormat("yyyy MMM dd", Locale.getDefault());
+    }
+
+    private static SimpleDateFormat getUkToUtcFormatter() {
+        return new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss", Locale.UK);
     }
 }

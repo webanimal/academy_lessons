@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import ru.webanimal.academy_lessons.R;
-import ru.webanimal.academy_lessons.ui.common.modelsUI.DigestItem;
+import ru.webanimal.academy_lessons.ui.common.modelsUIO.DigestItem;
 
 public class DigestActivity extends AppCompatActivity {
 

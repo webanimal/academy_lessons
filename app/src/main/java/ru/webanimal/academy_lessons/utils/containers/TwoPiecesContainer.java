@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.data.common.network;
+package ru.webanimal.academy_lessons.utils.containers;
 
 public class TwoPiecesContainer<T> {
 

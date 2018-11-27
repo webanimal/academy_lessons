@@ -5,9 +5,12 @@ import ru.webanimal.academy_lessons.ui.common.IPresenter;
 public interface IDigestsPresenter extends IPresenter {
 
     /**
-     * This method is intended to standardize binding process of a view to a presenter.
+     * To give a View's callbacks Access to a Presenter
      */
     void bindView(IDigestsView viewImpl);
 
+    /**
+     * IDigestsPresenter command
+     */
     void loadData();
 }

@@ -8,11 +8,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import ru.webanimal.academy_lessons.business.common.UnknownException;
-import ru.webanimal.academy_lessons.data.common.network.TwoPiecesContainer;
-import ru.webanimal.academy_lessons.data.features.digests.network.Errors.BadDigestsResponseException;
-import ru.webanimal.academy_lessons.data.features.digests.network.Errors.NoDigestsResponseException;
+import ru.webanimal.academy_lessons.utils.containers.TwoPiecesContainer;
+import ru.webanimal.academy_lessons.data.features.digests.network.errors.BadDigestsResponseException;
+import ru.webanimal.academy_lessons.data.features.digests.network.errors.NoDigestsResponseException;
 import ru.webanimal.academy_lessons.ui.common.BasePresenter;
-import ru.webanimal.academy_lessons.ui.common.modelsUI.DigestItem;
+import ru.webanimal.academy_lessons.ui.common.modelsUIO.DigestItem;
 import ru.webanimal.academy_lessons.utils.Application;
 
 public class DigestsPresenter extends BasePresenter implements IDigestsPresenter {
@@ -21,7 +21,7 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
     // Fields
     //==============================================================================================
 
-    private IDigestsView viewImpl = null;
+    private IDigestsView digestsViewImpl = null;
 
 
     //==============================================================================================
@@ -30,7 +30,7 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
 
     @Override
     public void bindView(IDigestsView digestsViewImpl) {
-        this.viewImpl = digestsViewImpl;
+        this.digestsViewImpl = digestsViewImpl;
         setView(digestsViewImpl);
     }
 
@@ -44,6 +44,11 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
 
         addDisposable(d);
     }
+
+
+    //==============================================================================================
+    // Private methods
+    //==============================================================================================
 
     private void handleResponse(TwoPiecesContainer<List<DigestItem>> container) {
         Log.d("tag", "test !!! presenter handleResponse() items:" + container);
@@ -59,7 +64,7 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
         }
 
         if (hasView()) {
-            viewImpl.onUpdateDataSet(items);
+            digestsViewImpl.onUpdateDataSet(items);
         }
     }
 
@@ -67,17 +72,17 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
         Log.e("tag", "test !!! presenter loadData() onError");
         if (hasView()) {
             if (t instanceof NoDigestsResponseException) {
-                viewImpl.onEmptyList(t.getMessage());
+                digestsViewImpl.onEmptyList(t.getMessage());
                 return;
             }
 
             if (t instanceof BadDigestsResponseException || t instanceof UnknownException) {
-                viewImpl.onError(t.getMessage());
+                digestsViewImpl.onError(t.getMessage());
                 return;
             }
 
             // Any other exception
-            viewImpl.onError(t.getMessage());
+            digestsViewImpl.onError(t.getMessage());
         }
     }
 }

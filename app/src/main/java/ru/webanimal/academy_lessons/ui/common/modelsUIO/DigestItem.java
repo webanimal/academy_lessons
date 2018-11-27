@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.ui.common.modelsUI;
+package ru.webanimal.academy_lessons.ui.common.modelsUIO;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -24,19 +24,20 @@ public class DigestItem implements Serializable {
         this.fullText = fullText;
         this.publishDate = publishDate;
         this.imageUrl = imageUrl;
-        this.categoryName = this.category.getName();
-        this.dateName = DateTimeUtils.getPublishedDateAsFormattedString(this.publishDate);
+        this.categoryName = category.getName();
+        this.dateName = DateTimeUtils.getPublishedDateAsFormattedString(publishDate);
     }
 
     public DigestItem(String title, String imageUrl, Category category, String publishDate, String previewText, String fullText) {
+        Date date = DateTimeUtils.getDateFromString(publishDate);
         this.category = category;
         this.title = title;
         this.previewText = previewText;
         this.fullText = fullText;
-        this.publishDate = DateTimeUtils.getDateFromString(publishDate);
+        this.publishDate = date;
         this.imageUrl = imageUrl;
-        this.categoryName = this.category.getName();
-        this.dateName = DateTimeUtils.getPublishedDateAsFormattedString(this.publishDate);
+        this.categoryName = category.getName();
+        this.dateName = DateTimeUtils.getPublishedDateAsFormattedString(date);
     }
 
     public Category getCategory() {

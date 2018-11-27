@@ -1,8 +1,7 @@
-package ru.webanimal.academy_lessons.ui.features.digests;
+package ru.webanimal.academy_lessons.ui.features.digests.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
@@ -10,7 +9,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.webanimal.academy_lessons.ui.common.modelsUI.DigestItem;
+import ru.webanimal.academy_lessons.ui.common.modelsUIO.DigestItem;
 
 public class DigestsAdapter extends RecyclerView.Adapter<DigestsViewHolder> {
 

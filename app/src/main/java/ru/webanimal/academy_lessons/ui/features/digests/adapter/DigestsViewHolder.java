@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.ui.features.digests;
+package ru.webanimal.academy_lessons.ui.features.digests.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +13,7 @@ import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 
 import ru.webanimal.academy_lessons.R;
-import ru.webanimal.academy_lessons.ui.common.modelsUI.DigestItem;
+import ru.webanimal.academy_lessons.ui.common.modelsUIO.DigestItem;
 import ru.webanimal.academy_lessons.ui.features.digest.DigestActivity;
 import ru.webanimal.academy_lessons.utils.DateTimeUtils;
 
@@ -66,7 +66,7 @@ public class DigestsViewHolder extends RecyclerView.ViewHolder {
     //==============================================================================================
 
     public void bindItem(DigestItem item) {
-        digestCategory.setText(item.getCategory().getName());
+        digestCategory.setText(item.getCategoryName());
         digestTitle.setText(item.getTitle());
         digestText.setText(item.getPreviewText());
         digestDate.setText(DateTimeUtils.getPublishedDateAsFormattedString(item.getPublishDate()));

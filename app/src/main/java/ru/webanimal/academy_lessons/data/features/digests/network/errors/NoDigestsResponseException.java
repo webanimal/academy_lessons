@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.data.features.digests.network.Errors;
+package ru.webanimal.academy_lessons.data.features.digests.network.errors;
 
 /**
  * Throws this if no data have arrived
