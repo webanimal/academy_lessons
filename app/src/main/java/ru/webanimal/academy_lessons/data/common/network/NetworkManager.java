@@ -10,7 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ru.webanimal.academy_lessons.data.features.digests.network.IDigestsRestApi;
-import ru.webanimal.academy_lessons.data.features.digests.network.IDigestsResults;
+import ru.webanimal.academy_lessons.data.features.digests.network.IDigestsNetworkManager;
 
 /**
  * See:
@@ -22,7 +22,7 @@ import ru.webanimal.academy_lessons.data.features.digests.network.IDigestsResult
  * BASE_URL builder:
  * http://api.nytimes.com/svc/topstories/v2/{section}.{response-format}?api-key={your-api-key}
  */
-public class NetworkManager implements IDigestsResults {
+public class NetworkManager implements IDigestsNetworkManager {
 
     //==============================================================================================
     // Static
@@ -61,7 +61,7 @@ public class NetworkManager implements IDigestsResults {
         final OkHttpClient httpClient = buildHttpClient();
         final Retrofit retrofit = buildRetrofitClient(httpClient);
 
-        //init endpoints here. It's can be more then one endpoint
+        //init endpoints here. Can be more then one endpoint
         digestsRestApi = retrofit.create(IDigestsRestApi.class);
     }
 

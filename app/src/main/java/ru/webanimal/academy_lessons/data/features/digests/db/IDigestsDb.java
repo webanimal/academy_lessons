@@ -5,7 +5,7 @@ import java.util.List;
 import io.reactivex.Observable;
 import ru.webanimal.academy_lessons.ui.common.UIO.DigestItem;
 
-public interface IDigestsRepository {
+public interface IDigestsDb {
 
     Observable<List<DigestItem>> fromDB();
 }
