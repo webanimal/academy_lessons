@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.data.common.network.modelsDTO;
+package ru.webanimal.academy_lessons.data.common.network.DTO;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -12,7 +12,7 @@ import ru.webanimal.academy_lessons.utils.containers.TwoPiecesContainer;
 import ru.webanimal.academy_lessons.data.features.digests.network.errors.BadDigestsResponseException;
 import ru.webanimal.academy_lessons.data.features.digests.network.errors.NoDigestsResponseException;
 import ru.webanimal.academy_lessons.ui.common.BasePresenter;
-import ru.webanimal.academy_lessons.ui.common.modelsUIO.DigestItem;
+import ru.webanimal.academy_lessons.ui.common.UIO.DigestItem;
 import ru.webanimal.academy_lessons.utils.Application;
 
 public class DigestsPresenter extends BasePresenter implements IDigestsPresenter {

@@ -1,4 +1,4 @@
-package ru.webanimal.academy_lessons.ui.common.modelsUIO;
+package ru.webanimal.academy_lessons.ui.common.UIO;
 
 public class Category {
     private final int id;

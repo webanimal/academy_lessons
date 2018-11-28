@@ -7,7 +7,7 @@ import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Path;
-import ru.webanimal.academy_lessons.data.common.network.modelsDTO.ResultsDTO;
+import ru.webanimal.academy_lessons.data.common.network.DTO.ResultsDTO;
 
 public interface IDigestsRestApi {
 

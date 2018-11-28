@@ -4,7 +4,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import ru.webanimal.academy_lessons.utils.containers.TwoPiecesContainer;
-import ru.webanimal.academy_lessons.ui.common.modelsUIO.DigestItem;
+import ru.webanimal.academy_lessons.ui.common.UIO.DigestItem;
 
 public interface IDigestsInteractor {
 

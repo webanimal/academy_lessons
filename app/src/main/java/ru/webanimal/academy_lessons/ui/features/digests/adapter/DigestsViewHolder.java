@@ -13,7 +13,7 @@ import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 
 import ru.webanimal.academy_lessons.R;
-import ru.webanimal.academy_lessons.ui.common.modelsUIO.DigestItem;
+import ru.webanimal.academy_lessons.ui.common.UIO.DigestItem;
 import ru.webanimal.academy_lessons.ui.features.digest.DigestActivity;
 import ru.webanimal.academy_lessons.utils.DateTimeUtils;
 

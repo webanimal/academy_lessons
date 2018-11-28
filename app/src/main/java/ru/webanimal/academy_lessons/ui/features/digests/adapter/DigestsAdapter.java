@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.webanimal.academy_lessons.ui.common.modelsUIO.DigestItem;
+import ru.webanimal.academy_lessons.ui.common.UIO.DigestItem;
 
 public class DigestsAdapter extends RecyclerView.Adapter<DigestsViewHolder> {
 

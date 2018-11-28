@@ -34,15 +34,15 @@ public abstract class BasePresenter {
     private void onLifecycleChange(LifecycleOwner source, Lifecycle.Event event) {
         Lifecycle.State state = source.getLifecycle().getCurrentState();
         switch (state) {
-            case CREATED:
             case STARTED:
             case RESUMED:
                 Log.d("tag", "onLifecycleChange state (2-3-4 cr/st/res):" + state);
                 setReady(true);
                 break;
 
-            case DESTROYED:
             case INITIALIZED:
+            case CREATED:
+            case DESTROYED:
                 Log.d("tag", "onLifecycleChange state (0-1 init/dest):" + state);
                 setReady(false);
                 break;
@@ -59,7 +59,6 @@ public abstract class BasePresenter {
     //==============================================================================================
     // Protected methods
     //==============================================================================================
-
 
     /**
      * BasePresenter method.

@@ -9,14 +9,14 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import ru.webanimal.academy_lessons.utils.containers.TwoPiecesContainer;
-import ru.webanimal.academy_lessons.data.common.network.modelsDTO.DigestDTO;
-import ru.webanimal.academy_lessons.data.common.network.modelsDTO.ResultsDTO;
-import ru.webanimal.academy_lessons.data.features.digests.mock.DigestsRepositoryImpl;
+import ru.webanimal.academy_lessons.data.common.network.DTO.DigestDTO;
+import ru.webanimal.academy_lessons.data.common.network.DTO.ResultsDTO;
+import ru.webanimal.academy_lessons.data.features.digests.db.DigestsRepositoryImpl;
 import ru.webanimal.academy_lessons.data.features.digests.network.errors.BadDigestsResponseException;
 import ru.webanimal.academy_lessons.data.features.digests.network.Categories;
 import ru.webanimal.academy_lessons.data.features.digests.network.errors.NoDigestsResponseException;
-import ru.webanimal.academy_lessons.ui.common.modelsUIO.Category;
-import ru.webanimal.academy_lessons.ui.common.modelsUIO.DigestItem;
+import ru.webanimal.academy_lessons.ui.common.UIO.Category;
+import ru.webanimal.academy_lessons.ui.common.UIO.DigestItem;
 import ru.webanimal.academy_lessons.utils.Application;
 
 public class DigestsInteractorImpl implements IDigestsInteractor {

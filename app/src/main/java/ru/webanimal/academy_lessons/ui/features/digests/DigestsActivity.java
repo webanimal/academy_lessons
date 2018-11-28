@@ -14,7 +14,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import ru.webanimal.academy_lessons.R;
-import ru.webanimal.academy_lessons.ui.common.modelsUIO.DigestItem;
+import ru.webanimal.academy_lessons.ui.common.UIO.DigestItem;
 import ru.webanimal.academy_lessons.ui.common.BaseActivity;
 import ru.webanimal.academy_lessons.ui.features.about.AboutActivity;
 import ru.webanimal.academy_lessons.ui.features.digests.adapter.DigestsAdapter;
