@@ -91,14 +91,12 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
 
     //==============================================================================================
 
-    @NonNull
     private int getHardcodedDefaultCategoryId() {
         return Application.provides().data().fromHardcore()
                 .forDigests()
                 .getDefaultCategoryId();
     }
 
-    @NonNull
     private int getHardcodedCategoryIdForName(String categoryName) {
         return Application.provides().data().fromHardcore()
                 .forDigests()

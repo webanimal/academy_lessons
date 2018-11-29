@@ -43,12 +43,10 @@ public class DigestsHardcodedImpl implements IDigestsHardcoded {
     // IDigestsHardcoded callbacks
     //==============================================================================================
 
-    @Override
     public int getDefaultCategoryId() {
         return DEFAULT_CATEGORY;
     }
 
-    @Override
     public int getCategoryIdForName(String name) {
         return idFor(name);
     }
@@ -63,6 +61,12 @@ public class DigestsHardcodedImpl implements IDigestsHardcoded {
     @Override
     public String getCategoryNameForId(int id) {
         return at(id);
+    }
+
+    @NonNull
+    @Override
+    public String[] getAllCategories() {
+        return CATEGORIES;
     }
 
 

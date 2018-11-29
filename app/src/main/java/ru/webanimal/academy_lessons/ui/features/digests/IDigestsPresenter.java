@@ -1,16 +1,24 @@
 package ru.webanimal.academy_lessons.ui.features.digests;
 
+import android.support.annotation.NonNull;
+import android.view.Menu;
+
 import ru.webanimal.academy_lessons.ui.common.IPresenter;
 
 public interface IDigestsPresenter extends IPresenter {
 
     /**
-     * To give a View's callbacks Access to a Presenter
+     * To attach a View to a Presenter. To listen to Presenter's commands.
      */
-    void bindView(IDigestsView viewImpl);
+    void bindView(@NonNull IDigestsView viewImpl);
 
     /**
-     * IDigestsPresenter command
+     * View asks a Presenter to create an action Menu.
+     */
+    void createMenu(@NonNull Menu menu);
+
+    /**
+     * View asks a Presenter to load data.
      */
     void loadData();
 }

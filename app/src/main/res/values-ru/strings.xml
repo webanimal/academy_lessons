@@ -32,8 +32,9 @@
     <string name="send_mail_chooser_title">Отправить с помощью:</string>
     <!-- Send mail tools -->
 
-    <!-- Menues -->
-    <string name="action_news_list_about">О приложении</string>
-    <!-- Menues -->
+    <!-- Menu -->
+    <string name="digests_action_categories_title">Категории</string>
+    <string name="digests_action_about_title">О приложении</string>
+    <!-- Menu -->
 
 </resources>

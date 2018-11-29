@@ -4,10 +4,8 @@ import android.support.annotation.NonNull;
 
 public interface IDigestsHardcoded {
 
-    @NonNull
     int getDefaultCategoryId();
 
-    @NonNull
     int getCategoryIdForName(String name);
 
     @NonNull
@@ -15,4 +13,7 @@ public interface IDigestsHardcoded {
 
     @NonNull
     String getCategoryNameForId(int id);
+
+    @NonNull
+    String[] getAllCategories();
 }
