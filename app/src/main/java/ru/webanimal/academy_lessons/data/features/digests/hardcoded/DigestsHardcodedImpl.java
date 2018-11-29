@@ -49,7 +49,7 @@ public class DigestsHardcodedImpl implements IDigestsHardcoded {
     }
 
     @Override
-    public int findCategoryIdForName(String name) {
+    public int getCategoryIdForName(String name) {
         return idFor(name);
     }
 
@@ -61,7 +61,7 @@ public class DigestsHardcodedImpl implements IDigestsHardcoded {
 
     @NonNull
     @Override
-    public String findCategoryNameForId(int id) {
+    public String getCategoryNameForId(int id) {
         return at(id);
     }
 

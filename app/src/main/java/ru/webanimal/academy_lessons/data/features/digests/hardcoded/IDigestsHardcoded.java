@@ -8,11 +8,11 @@ public interface IDigestsHardcoded {
     int getDefaultCategoryId();
 
     @NonNull
-    int findCategoryIdForName(String name);
+    int getCategoryIdForName(String name);
 
     @NonNull
     String getDefaultCategoryName();
 
     @NonNull
-    String findCategoryNameForId(int id);
+    String getCategoryNameForId(int id);
 }

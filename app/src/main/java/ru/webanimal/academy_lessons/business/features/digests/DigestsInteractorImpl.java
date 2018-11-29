@@ -2,7 +2,6 @@ package ru.webanimal.academy_lessons.business.features.digests;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +37,7 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
     public Observable<TwoPiecesContainer<List<DigestItem>>> fromNetwork() {
         return Application.provides().data().fromNetwork()
                 .digestsRestApi()
-                .call(fromHardcodedDefaultCategoryName())
+                .call(getHardcodedDefaultCategoryName())
                 .map(response -> {
                     Throwable t = null;
                     if (!response.isSuccessful()) {
@@ -69,7 +68,7 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
                         CollectionUtils.isEmpty(dto.getMultimediaDTO())
                                 ? ""
                                 : dto.getMultimediaDTO().get(dto.DEFAULT_MULTIMEDIA_DTO_FORMAT).getUrl(),
-                        new Category(fromHardcodedCategoryIdForName(dto.getCategory()), dto.getCategory()),
+                        new Category(getHardcodedCategoryIdForName(dto.getCategory()), dto.getCategory()),
                         dto.getDate(),
                         dto.getShortText(),
                         dto.getFullText()
@@ -86,7 +85,6 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
     @NonNull
     private List<DigestItem> fromDAO() {
         // stub
-        Log.d("tag", "test !!! fromDAO() results:empty");
         List<DigestItem> digests = new ArrayList<>();
         return digests;
     }
@@ -94,30 +92,30 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
     //==============================================================================================
 
     @NonNull
-    private int fromHardcodedDefaultCategoryId() {
+    private int getHardcodedDefaultCategoryId() {
         return Application.provides().data().fromHardcore()
                 .forDigests()
                 .getDefaultCategoryId();
     }
 
     @NonNull
-    private int fromHardcodedCategoryIdForName(String categoryName) {
+    private int getHardcodedCategoryIdForName(String categoryName) {
         return Application.provides().data().fromHardcore()
                 .forDigests()
-                .findCategoryIdForName(categoryName);
+                .getCategoryIdForName(categoryName);
     }
 
     @NonNull
-    private String fromHardcodedDefaultCategoryName() {
+    private String getHardcodedDefaultCategoryName() {
         return Application.provides().data().fromHardcore()
                 .forDigests()
                 .getDefaultCategoryName();
     }
 
     @NonNull
-    private String fromHardcodedCategoryNameForId(int categoryId) {
+    private String getHardcodedCategoryNameForId(int categoryId) {
         return Application.provides().data().fromHardcore()
                 .forDigests()
-                .findCategoryNameForId(categoryId);
+                .getCategoryNameForId(categoryId);
     }
 }
