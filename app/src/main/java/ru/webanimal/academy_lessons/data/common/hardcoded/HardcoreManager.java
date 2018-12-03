@@ -1,23 +1,23 @@
-package ru.webanimal.academy_lessons.data.common;
+package ru.webanimal.academy_lessons.data.common.hardcoded;
 
 import android.support.annotation.NonNull;
 
-import ru.webanimal.academy_lessons.data.common.hardcoded.HardcoreManager;
-import ru.webanimal.academy_lessons.data.common.network.NetworkManager;
 import ru.webanimal.academy_lessons.data.features.digests.hardcoded.DigestsHardcodedImpl;
-import ru.webanimal.academy_lessons.ui.common.UIO.Category;
+import ru.webanimal.academy_lessons.data.features.digests.hardcoded.IDigestsHardcoded;
+import ru.webanimal.academy_lessons.data.features.digests.hardcoded.IDigestsHardcodedManager;
 
-public class DataManagerImpl implements IDataManager {
+public class HardcoreManager implements IDigestsHardcodedManager {
 
     //==============================================================================================
     // Static
     //==============================================================================================
 
-    private static DataManagerImpl instance;
-    public static DataManagerImpl get() {
+    private static HardcoreManager instance;
+    public static synchronized HardcoreManager get() {
         if (instance == null) {
-            instance = new DataManagerImpl();
+            instance = new HardcoreManager();
         }
+
         return instance;
     }
 
@@ -26,33 +26,26 @@ public class DataManagerImpl implements IDataManager {
     // Fields
     //==============================================================================================
 
-    private final NetworkManager networkManager;
-    private final HardcoreManager hardcoreManager;
+    private IDigestsHardcoded digests;
 
 
     //==============================================================================================
     // Constructor
     //==============================================================================================
 
-    private DataManagerImpl() {
-        networkManager = NetworkManager.get();
-        hardcoreManager = HardcoreManager.get();
+    private HardcoreManager() {
+        //init hardcoded sources here. Can be more then one endpoint
+        digests = new DigestsHardcodedImpl();
     }
 
 
     //==============================================================================================
-    // IDataManager callbacks
+    // Hardcoded managers callbacks
     //==============================================================================================
 
     @NonNull
     @Override
-    public NetworkManager fromNetwork() {
-        return networkManager;
-    }
-
-    @NonNull
-    @Override
-    public HardcoreManager fromHardcore() {
-        return hardcoreManager;
+    public IDigestsHardcoded forDigests() {
+        return digests;
     }
 }

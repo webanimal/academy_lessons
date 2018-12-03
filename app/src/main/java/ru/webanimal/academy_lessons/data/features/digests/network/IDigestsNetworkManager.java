@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 /**
  * To implement in the {@link ru.webanimal.academy_lessons.data.common.network.NetworkManager}
  */
-public interface IDigestsResults {
+public interface IDigestsNetworkManager {
 
     @NonNull
     IDigestsRestApi digestsRestApi();

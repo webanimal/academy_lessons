@@ -37,9 +37,10 @@
     <string name="send_mail_chooser_title">Send message via:</string>
     <!-- Send mail tools -->
 
-    <!-- Menues -->
-    <string name="action_news_list_about">About</string>
-    <!-- Menues -->
+    <!-- Menu -->
+    <string name="digests_action_categories_title">Categories</string>
+    <string name="digests_action_about_title">About</string>
+    <!-- Menu -->
 
     <!-- Fonts -->
     <string name="font_family_regular" translatable="false">sans-serif</string>

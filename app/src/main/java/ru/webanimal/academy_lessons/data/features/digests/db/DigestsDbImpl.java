@@ -6,10 +6,10 @@ import io.reactivex.Observable;
 import ru.webanimal.academy_lessons.ui.common.UIO.DigestItem;
 import ru.webanimal.academy_lessons.utils.DataUtils;
 
-public class DigestsRepositoryImpl implements IDigestsRepository {
+public class DigestsDbImpl implements IDigestsDb {
 
     //==============================================================================================
-    // IDigestsRepository callbacks
+    // IDigestsDb callbacks
     //==============================================================================================
 
     // From ROOM. Not implemented yet.

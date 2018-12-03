@@ -1,5 +1,7 @@
 package ru.webanimal.academy_lessons.data.common.network.DTO;
 
+import android.support.annotation.Nullable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -20,8 +22,10 @@ public class ResultsDTO {
         this.results = results;
     }
 
+    @Nullable
     public String getStatus() { return this.status; }
 
+    @Nullable
     public List<DigestDTO> getResults() {
         return this.results;
     }

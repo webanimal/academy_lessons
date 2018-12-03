@@ -2,18 +2,17 @@ package ru.webanimal.academy_lessons.business.features.digests;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
+import ru.webanimal.academy_lessons.utils.CollectionUtils;
 import ru.webanimal.academy_lessons.utils.containers.TwoPiecesContainer;
 import ru.webanimal.academy_lessons.data.common.network.DTO.DigestDTO;
 import ru.webanimal.academy_lessons.data.common.network.DTO.ResultsDTO;
-import ru.webanimal.academy_lessons.data.features.digests.db.DigestsRepositoryImpl;
+import ru.webanimal.academy_lessons.data.features.digests.db.DigestsDbImpl;
 import ru.webanimal.academy_lessons.data.features.digests.network.errors.BadDigestsResponseException;
-import ru.webanimal.academy_lessons.data.features.digests.network.Categories;
 import ru.webanimal.academy_lessons.data.features.digests.network.errors.NoDigestsResponseException;
 import ru.webanimal.academy_lessons.ui.common.UIO.Category;
 import ru.webanimal.academy_lessons.ui.common.UIO.DigestItem;
@@ -29,7 +28,7 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
     @Override
     public Observable<TwoPiecesContainer<List<DigestItem>>> fromDB() {
         // FIXME (Sergio): not implemented yet
-        return new DigestsRepositoryImpl().fromDB()
+        return new DigestsDbImpl().fromDB()
                 .map(list -> new TwoPiecesContainer<>(list, null));
     }
 
@@ -38,8 +37,7 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
     public Observable<TwoPiecesContainer<List<DigestItem>>> fromNetwork() {
         return Application.provides().data().fromNetwork()
                 .digestsRestApi()
-                // TODO (Sergio): pass here a category type from the UI menu
-                .call(Categories.at(Categories.DEFAULT_CATEGORY))
+                .call(getHardcodedDefaultCategoryName())
                 .map(response -> {
                     Throwable t = null;
                     if (!response.isSuccessful()) {
@@ -47,7 +45,7 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
                     }
 
                     final ResultsDTO res = response.body();
-                    if (res == null || res.getResults() == null || res.getResults().size() == 0) {
+                    if (res == null || CollectionUtils.isEmpty(res.getResults())) {
                         t = new NoDigestsResponseException();
                     }
 
@@ -62,17 +60,15 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
 
     @NonNull
     private List<DigestItem> fromDTO(@Nullable ResultsDTO resultsDTO) {
-        Log.d("tag", "test !!! fromDTO() ResultsDTO:" + resultsDTO);
         List<DigestItem> digests = new ArrayList<>();
-        if (resultsDTO != null) {
-            Log.d("tag", "test !!! fromDTO() List<DigestDTO>:" + resultsDTO.getResults());
+        if (resultsDTO != null && !CollectionUtils.isEmpty(resultsDTO.getResults())) {
             for (DigestDTO dto : resultsDTO.getResults()) {
-                Category category = new Category(Categories.idFor(dto.getCategory()), dto.getCategory());
                 DigestItem uio = new DigestItem(
                         dto.getTitle(),
-                        // TODO (Sergio): add check if multimedia empty
-                        dto.getMultimediaDTO().get(dto.DEFAULT_MULTIMEDIA_DTO_FORMAT).getUrl(),
-                        category,
+                        CollectionUtils.isEmpty(dto.getMultimediaDTO())
+                                ? ""
+                                : dto.getMultimediaDTO().get(dto.DEFAULT_MULTIMEDIA_DTO_FORMAT).getUrl(),
+                        new Category(getHardcodedCategoryIdForName(dto.getCategory()), dto.getCategory()),
                         dto.getDate(),
                         dto.getShortText(),
                         dto.getFullText()
@@ -84,11 +80,40 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
         return digests;
     }
 
+    //==============================================================================================
+
     @NonNull
     private List<DigestItem> fromDAO() {
         // stub
-        Log.d("tag", "test !!! fromDAO() results:empty");
         List<DigestItem> digests = new ArrayList<>();
         return digests;
+    }
+
+    //==============================================================================================
+
+    private int getHardcodedDefaultCategoryId() {
+        return Application.provides().data().fromHardcore()
+                .forDigests()
+                .getDefaultCategoryId();
+    }
+
+    private int getHardcodedCategoryIdForName(String categoryName) {
+        return Application.provides().data().fromHardcore()
+                .forDigests()
+                .getCategoryIdForName(categoryName);
+    }
+
+    @NonNull
+    private String getHardcodedDefaultCategoryName() {
+        return Application.provides().data().fromHardcore()
+                .forDigests()
+                .getDefaultCategoryName();
+    }
+
+    @NonNull
+    private String getHardcodedCategoryNameForId(int categoryId) {
+        return Application.provides().data().fromHardcore()
+                .forDigests()
+                .getCategoryNameForId(categoryId);
     }
 }

@@ -2,6 +2,7 @@ package ru.webanimal.academy_lessons.ui.features.digests;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -60,13 +61,17 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(LAYOUT_MAIN_MENU, menu);
+        if (menu != null) {
+            getPresenter().createMenu(menu);
+        }
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int actionId = item.getItemId();
-        if (actionId == R.id.action_about) {
+        if (actionId == R.id.digests_action_about) {
             startActivity(new Intent(this, AboutActivity.class));
             return true;
         }
@@ -79,8 +84,14 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
     // IDigestsView callbacks
     //==============================================================================================
 
+
     @Override
-    public void onUpdateDataSet(List<DigestItem> dataSet) {
+    public void onUpdateOptionsMenu(@NonNull Menu menu) {
+        super.onCreateOptionsMenu(menu); // Call "onCreateOptionsMenu" twice?
+    }
+
+    @Override
+    public void onUpdateDataSet(@NonNull List<DigestItem> dataSet) {
         Log.d("tag", "activity onUpdateDataSet()");
         adapter.setData(dataSet);
         adapter.notifyDataSetChanged();

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- These are action_stub_ids for a DigestsActivity's menu (with no value) -->
+    <!-- suppress AndroidDomInspection -->
+    <integer-array name="digests_actions">
+        <item type="id" name="digests_action_group_01" />
+        <item type="id" name="digests_action_group_02" />
+        <item type="id" name="digests_action_group_03" />
+        <item type="id" name="digests_action_group_04" />
+        <item type="id" name="digests_action_group_05" />
+        <item type="id" name="digests_action_group_06" />
+        <item type="id" name="digests_action_group_07" />
+        <item type="id" name="digests_action_group_08" />
+        <item type="id" name="digests_action_group_09" />
+        <item type="id" name="digests_action_group_10" />
+        <item type="id" name="digests_action_group_11" />
+        <item type="id" name="digests_action_group_12" />
+        <item type="id" name="digests_action_group_13" />
+        <item type="id" name="digests_action_group_14" />
+        <item type="id" name="digests_action_group_15" />
+        <item type="id" name="digests_action_group_16" />
+        <item type="id" name="digests_action_group_17" />
+        <item type="id" name="digests_action_group_18" />
+        <item type="id" name="digests_action_group_19" />
+        <item type="id" name="digests_action_group_20" />
+        <item type="id" name="digests_action_group_21" />
+        <item type="id" name="digests_action_group_22" />
+        <item type="id" name="digests_action_group_23" />
+        <item type="id" name="digests_action_group_24" />
+        <item type="id" name="digests_action_group_25" />
+        <item type="id" name="digests_action_group_26" />
+        <item type="id" name="digests_action_group_27" />
+        <item type="id" name="digests_action_group_28" />
+        <item type="id" name="digests_action_group_29" />
+        <item type="id" name="digests_action_group_30" />
+    </integer-array>
+
+</resources>
