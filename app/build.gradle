@@ -69,8 +69,14 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    // This indicator depends on an old support library, without implementation of a LifecycleOwner
+//    implementation 'com.viewpagerindicator:library:2.4.1', {exclude module: 'com.android.support', group: 'support-v4'}
+    // something went wrong with java and path: C:\Program Files\Android\Android Studio\gradle\gradle-4.4\bin\gradle -q dependencies your-app-project:dependencies
+
+//    implementation "com.android.support:appcompat-v7:{}"
     implementation "com.android.support:design:${supportLibVersion}"
     implementation "com.android.support:cardview-v7:${supportLibVersion}"
+    implementation "com.android.support:leanback-v17:${supportLibVersion}"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:multidex:1.0.3'
 

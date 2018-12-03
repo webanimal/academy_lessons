@@ -1,5 +1,15 @@
 <resources>
 
+    <!-- Tutorial -->
+    <string name="fragment_tutorial_image_description">Контейтер, в котором размещаются иллюстрации к демо слайдам</string>
+    <string name="fragment_tutorial_page_welcome_text_title">Приветствую!</string>
+    <string name="fragment_tutorial_page_welcome_text_description">Это читалка новостей NY Times для Андройд Академии Москва.</string>
+    <string name="fragment_tutorial_page_list_text_title">Подборка популярных новостей!</string>
+    <string name="fragment_tutorial_page_list_text_description">Выбери тему в главном меню, загружай, читай.</string>
+    <string name="fragment_tutorial_page_details_text_title">Можно больше!</string>
+    <string name="fragment_tutorial_page_details_text_description">Нашел что-то интересное? Жми на новость и читай подробности.</string>
+    <!-- Tutorial -->
+
     <!-- DigestsListActivity -->
     <string name="activity_digests_list_title">Лента</string>
     <!-- DigestsListActivity -->

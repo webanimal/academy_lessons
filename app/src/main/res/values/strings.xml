@@ -1,6 +1,16 @@
 <resources>
 
-    <string name="app_name" translatable="false">My digest app</string>
+    <string name="app_name" translatable="false">NY Times</string>
+
+    <!-- Tutorial -->
+    <string name="fragment_tutorial_image_description">A container where tutorial images placed</string>
+    <string name="fragment_tutorial_page_welcome_text_title">Welcome!</string>
+    <string name="fragment_tutorial_page_welcome_text_description">This is a NY Times reader for a Android Academy Moscow.</string>
+    <string name="fragment_tutorial_page_list_text_title">The most popular news digests!</string>
+    <string name="fragment_tutorial_page_list_text_description">Choose a topic from a main menu, download, read.</string>
+    <string name="fragment_tutorial_page_details_text_title">There is more!</string>
+    <string name="fragment_tutorial_page_details_text_description">Found something interesting? Tap it and enjoy the full article.</string>
+    <!-- Tutorial -->
 
     <!-- DigestsListActivity -->
     <string name="activity_digests_list_title">Digests</string>

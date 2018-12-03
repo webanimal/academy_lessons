@@ -1,6 +1,5 @@
 package ru.webanimal.academy_lessons.ui.features.digests;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.util.Log;

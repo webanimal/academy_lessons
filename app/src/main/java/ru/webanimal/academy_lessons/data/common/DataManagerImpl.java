@@ -4,8 +4,6 @@ import android.support.annotation.NonNull;
 
 import ru.webanimal.academy_lessons.data.common.hardcoded.HardcoreManager;
 import ru.webanimal.academy_lessons.data.common.network.NetworkManager;
-import ru.webanimal.academy_lessons.data.features.digests.hardcoded.DigestsHardcodedImpl;
-import ru.webanimal.academy_lessons.ui.common.UIO.Category;
 
 public class DataManagerImpl implements IDataManager {
 

@@ -17,4 +17,6 @@
     <dimen name="layout_digest_avatar_width">96dp</dimen>
     <dimen name="layout_digest_full_avatar_width">256dp</dimen>
 
+    <dimen name="layout_tutorial_content_image_size">96dp</dimen>
+
 </resources>

@@ -18,7 +18,7 @@
         android:layout_marginStart="@dimen/activity_space_horizontal_xsmall"
         android:padding="@dimen/activity_space_vertical_small"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/bckg_card_digest_content"
+        android:background="@drawable/shape_card_digest_content"
         >
 
         <LinearLayout
