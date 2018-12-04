@@ -13,7 +13,7 @@ Please use the code "as is" and don't ask questons.
 * Current version is a "1.5.0.6" and it means that homework completed at about 45%. Don't try to find any logic in numbers. It's just a revision number.
 * [See the Original examples here](https://github.com/android-academy-msk)
 
-### A rules i decided to realize in the project (a Contract) ###
+### Rules i decided to realize in the project (a Contract) ###
 
 * Content source for the application is a [NY Times Rest API](https://developer.nytimes.com/top_stories_v2.json#/Documentation/GET/%7Bsection%7D.%7Bformat%7D)
 * Supports Portrait and Landscape orientations
