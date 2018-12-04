@@ -6,13 +6,16 @@ public interface IDigestsHardcoded {
 
     int getDefaultCategoryId();
 
-    int getCategoryIdForName(String name);
+    int getCategoryIdForName(@NonNull String name);
 
     @NonNull
     String getDefaultCategoryName();
 
     @NonNull
     String getCategoryNameForId(int id);
+
+    @NonNull
+    String approveOrGetDefaultCategoryName(@NonNull String name);
 
     @NonNull
     String[] getAllCategories();

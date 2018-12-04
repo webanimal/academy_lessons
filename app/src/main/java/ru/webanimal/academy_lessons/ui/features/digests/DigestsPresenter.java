@@ -50,9 +50,20 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
     }
 
     @Override
-    public void loadData() {
+    public void loadDefaultData() {
         final Disposable d = Application.provides().interactors().getDigestsInteractor()
-                .getDigests()
+                .getDefaultDigests()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleResponse, this::handleErrors);
+
+        addDisposable(d);
+    }
+
+    @Override
+    public void loadData(@NonNull String categoryName) {
+        final Disposable d = Application.provides().interactors().getDigestsInteractor()
+                .getDigests(categoryName)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::handleResponse, this::handleErrors);
@@ -70,7 +81,8 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
 
         Resources res = Application.provides().context().getResources();
         int[] actions = res.getIntArray(R.array.digests_actions);
-        String[] categories = Application.provides().data().fromHardcore().forDigests().getAllCategories();
+        String[] categories = Application.provides().interactors().getDigestsInteractor()
+                .getDigestsCategories();
         int cap = Math.min(actions.length, categories.length);
 
         SubMenu sub = menu.getItem(0).getSubMenu();
@@ -95,7 +107,7 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
     }
 
     private void handleResponse(TwoPiecesContainer<List<DigestItem>> container) {
-        Log.d("tag", "test !!! presenter handleResponse() items:" + container);
+        Log.d("tag", "test !!! presenter handleResponse()");
         if (container.getSecond() != null) {
             handleErrors(container.getSecond());
             return;
@@ -113,7 +125,7 @@ public class DigestsPresenter extends BasePresenter implements IDigestsPresenter
     }
 
     private void handleErrors(Throwable t) {
-        Log.e("tag", "test !!! presenter loadData() onError");
+        Log.e("tag", "test !!! presenter handleErrors()");
         if (hasView()) {
             if (t instanceof NoDigestsResponseException) {
                 digestsViewImpl.onEmptyList(t.getMessage());

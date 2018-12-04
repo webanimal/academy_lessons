@@ -1,5 +1,7 @@
 package ru.webanimal.academy_lessons.business.features.digests;
 
+import android.support.annotation.NonNull;
+
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -20,9 +22,20 @@ public class DigestsFacadeImpl implements IDigestsFacade {
     //==============================================================================================
 
     @Override
-    public Observable<TwoPiecesContainer<List<DigestItem>>> getDigests() {
+    public Observable<TwoPiecesContainer<List<DigestItem>>> getDefaultDigests() {
+        return getInteractor().fromNetwork("");
+    }
+
+    @Override
+    public Observable<TwoPiecesContainer<List<DigestItem>>> getDigests(@NonNull String categoryName) {
         // TODO (Sergio): add here a data source selector (DB, Network)
-        return getInteractor().fromNetwork();
+        return getInteractor().fromNetwork(categoryName);
+    }
+
+    @NonNull
+    @Override
+    public String[] getDigestsCategories() {
+        return getInteractor().getDigestsCategories();
     }
 
 

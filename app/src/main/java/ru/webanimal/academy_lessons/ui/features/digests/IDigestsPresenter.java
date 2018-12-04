@@ -18,7 +18,12 @@ public interface IDigestsPresenter extends IPresenter {
     void createMenu(@NonNull Menu menu);
 
     /**
-     * View asks a Presenter to load data.
+     * View asks a Presenter to load a default data.
      */
-    void loadData();
+    void loadDefaultData();
+
+    /**
+     * View asks a Presenter to load a data for a chosen category name.
+     */
+    void loadData(@NonNull String categoryName);
 }

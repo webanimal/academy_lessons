@@ -4,6 +4,7 @@
     <!-- These are action_stub_ids for a DigestsActivity's menu (with no value) -->
     <!-- suppress AndroidDomInspection -->
     <integer-array name="digests_actions">
+        <item type="id" name="digests_action_group_00" />
         <item type="id" name="digests_action_group_01" />
         <item type="id" name="digests_action_group_02" />
         <item type="id" name="digests_action_group_03" />
@@ -33,7 +34,6 @@
         <item type="id" name="digests_action_group_27" />
         <item type="id" name="digests_action_group_28" />
         <item type="id" name="digests_action_group_29" />
-        <item type="id" name="digests_action_group_30" />
     </integer-array>
 
 </resources>

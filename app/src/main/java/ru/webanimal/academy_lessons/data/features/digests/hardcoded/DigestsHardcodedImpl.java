@@ -47,7 +47,7 @@ public class DigestsHardcodedImpl implements IDigestsHardcoded {
         return DEFAULT_CATEGORY;
     }
 
-    public int getCategoryIdForName(String name) {
+    public int getCategoryIdForName(@NonNull String name) {
         return idFor(name);
     }
 
@@ -63,6 +63,18 @@ public class DigestsHardcodedImpl implements IDigestsHardcoded {
         return at(id);
     }
 
+    /**
+     * Verify if a name is presented in the categories list.
+     * Approve or change with the default name.<br><br>
+     * @param name a proposed category name.
+     * @return this name on success or default category name on failure.
+     */
+    @NonNull
+    @Override
+    public String approveOrGetDefaultCategoryName(@NonNull String name) {
+        return at(idFor(name));
+    }
+
     @NonNull
     @Override
     public String[] getAllCategories() {
@@ -74,15 +86,16 @@ public class DigestsHardcodedImpl implements IDigestsHardcoded {
     // Private methods
     //==============================================================================================
 
-    private int idFor(String proposedCategory) {
+    private int idFor(@NonNull String proposedCategory) {
         for (int i = 0; i < CATEGORIES.length; i++) {
             if (CATEGORIES[i].equalsIgnoreCase(proposedCategory)) {
                 return i;
             }
         }
-        return 0;
+        return DEFAULT_CATEGORY;
     }
 
+    @NonNull
     private String at(int position) {
         int length = CATEGORIES.length;
         int pos = position;

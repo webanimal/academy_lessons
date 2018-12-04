@@ -26,18 +26,18 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
 
     // fromDB
     @Override
-    public Observable<TwoPiecesContainer<List<DigestItem>>> fromDB() {
+    public Observable<TwoPiecesContainer<List<DigestItem>>> fromDB(@NonNull String categoryName) {
         // FIXME (Sergio): not implemented yet
-        return new DigestsDbImpl().fromDB()
+        return new DigestsDbImpl().fromDB(categoryName)
                 .map(list -> new TwoPiecesContainer<>(list, null));
     }
 
     // fromNetwork
     @Override
-    public Observable<TwoPiecesContainer<List<DigestItem>>> fromNetwork() {
+    public Observable<TwoPiecesContainer<List<DigestItem>>> fromNetwork(@NonNull String categoryName) {
         return Application.provides().data().fromNetwork()
                 .digestsRestApi()
-                .call(getHardcodedDefaultCategoryName())
+                .call(approveOrGetHardcodedDefaultCategoryName(categoryName))
                 .map(response -> {
                     Throwable t = null;
                     if (!response.isSuccessful()) {
@@ -51,6 +51,12 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
 
                     return new TwoPiecesContainer<>(fromDTO(res), t);
                 });
+    }
+
+    @NonNull
+    @Override
+    public String[] getDigestsCategories() {
+        return getDigestsCategoryNames();
     }
 
 
@@ -85,8 +91,7 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
     @NonNull
     private List<DigestItem> fromDAO() {
         // stub
-        List<DigestItem> digests = new ArrayList<>();
-        return digests;
+        return new ArrayList<>();
     }
 
     //==============================================================================================
@@ -97,10 +102,10 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
                 .getDefaultCategoryId();
     }
 
-    private int getHardcodedCategoryIdForName(String categoryName) {
+    private int getHardcodedCategoryIdForName(@Nullable String categoryName) {
         return Application.provides().data().fromHardcore()
                 .forDigests()
-                .getCategoryIdForName(categoryName);
+                .getCategoryIdForName(categoryName == null ? "" : categoryName);
     }
 
     @NonNull
@@ -115,5 +120,17 @@ public class DigestsInteractorImpl implements IDigestsInteractor {
         return Application.provides().data().fromHardcore()
                 .forDigests()
                 .getCategoryNameForId(categoryId);
+    }
+
+    @NonNull
+    private String approveOrGetHardcodedDefaultCategoryName(@NonNull String categoryName) {
+        return Application.provides().data().fromHardcore()
+                .forDigests()
+                .approveOrGetDefaultCategoryName(categoryName);
+    }
+
+    @NonNull
+    private String[] getDigestsCategoryNames() {
+        return Application.provides().data().fromHardcore().forDigests().getAllCategories();
     }
 }
