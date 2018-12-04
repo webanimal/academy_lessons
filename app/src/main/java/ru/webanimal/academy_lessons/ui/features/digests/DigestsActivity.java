@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.widget.Toast;
 
 import java.util.List;
@@ -55,7 +56,7 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
     @Override
     protected void onResume() {
         super.onResume();
-        getPresenter().loadData();
+        getPresenter().loadDefaultData();
     }
 
     @Override
@@ -74,7 +75,19 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
         if (actionId == R.id.digests_action_about) {
             startActivity(new Intent(this, AboutActivity.class));
             return true;
+
+        } else if (actionId == R.id.digests_action_categories
+                || actionId == R.id.digests_action_group_about
+                || actionId == R.id.digests_action_group_categories) {
+            // Ignored
+
+        } else {
+            // These actions added at runtime
+            CharSequence cs = item.getTitle();
+            String categoryName = cs != null ? cs.toString() : "";
+            getPresenter().loadData(categoryName);
         }
+
 
         return false;
     }
