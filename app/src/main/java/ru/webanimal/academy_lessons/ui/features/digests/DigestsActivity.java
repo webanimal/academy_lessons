@@ -84,7 +84,6 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
     // IDigestsView callbacks
     //==============================================================================================
 
-
     @Override
     public void onUpdateOptionsMenu(@NonNull Menu menu) {
         super.onCreateOptionsMenu(menu); // Call "onCreateOptionsMenu" twice?
@@ -145,6 +144,7 @@ public class DigestsActivity extends BaseActivity implements IDigestsView {
     private void setupTitle() {
         setSupportActionBar(findViewById(R.id.toolbar));
         setTitle(getString(R.string.activity_digests_list_title));
+
     }
 
     private void setupRecycler() {
