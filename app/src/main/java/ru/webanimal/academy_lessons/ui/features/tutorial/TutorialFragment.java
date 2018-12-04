@@ -1,5 +1,8 @@
 package ru.webanimal.academy_lessons.ui.features.tutorial;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -43,6 +46,7 @@ public class TutorialFragment extends OnboardingSupportFragment {
     };
 
     private final static int PAGES_SIZE = pictureIds.length;
+    private final static int LOGO_SPLASH_PAUSE_DURATION_MS = 333;
 
     public static TutorialFragment create() {
         return new TutorialFragment();
@@ -65,6 +69,24 @@ public class TutorialFragment extends OnboardingSupportFragment {
         return R.style.Tutorial;
     }
 
+    @Nullable
+    @Override
+    protected Animator onCreateLogoAnimation() {
+        final Context context = getContext();
+        if (context == null) {
+            return super.onCreateLogoAnimation();
+        }
+
+        Animator inAnimator = AnimatorInflater.loadAnimator(context, R.animator.animator_tutorial_logo_enter);
+        Animator outAnimator = AnimatorInflater.loadAnimator(context, R.animator.animator_tutorial_logo_exit);
+        outAnimator.setStartDelay(LOGO_SPLASH_PAUSE_DURATION_MS);
+
+        AnimatorSet logoAnimator = new AnimatorSet();
+        logoAnimator.playSequentially(inAnimator, outAnimator);
+
+        return logoAnimator;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,8 +104,8 @@ public class TutorialFragment extends OnboardingSupportFragment {
     @Override
     protected View onCreateContentView(LayoutInflater inflater, ViewGroup container) {
         tutorialImage = new ImageView(getContext());
-        tutorialImage.setMaxWidth((int)getResources().getDimension(R.dimen.layout_tutorial_content_image_size));
-        tutorialImage.setMaxHeight((int)getResources().getDimension(R.dimen.layout_tutorial_content_image_size));
+//        tutorialImage.setMaxWidth((int)getResources().getDimension(R.dimen.layout_tutorial_content_image_size));
+//        tutorialImage.setMaxHeight((int)getResources().getDimension(R.dimen.layout_tutorial_content_image_size));
         tutorialImage.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         tutorialImage.setImageDrawable(getPageImage(getCurrentPageIndex()));
         int padd = (int)getResources().getDimension(R.dimen.activity_space_horizontal_normal);
@@ -130,6 +152,11 @@ public class TutorialFragment extends OnboardingSupportFragment {
     //==============================================================================================
     // Private methods
     //==============================================================================================
+
+    @Nullable
+    private Drawable getLogoImage() {
+        return ContextCompat.getDrawable(getAppContext(), R.drawable.img_cat_port);
+    }
 
     @Nullable
     private Drawable getPageImage(int pageIndex) {

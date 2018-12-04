@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Tutorial" parent="@style/Theme.Leanback.Onboarding">
+        <item name="onboardingHeaderStyle">@style/Tutorial.Header</item>
+        <item name="onboardingTitleStyle">@style/Tutorial.Title</item>
+        <item name="onboardingDescriptionStyle">@style/Tutorial.Description</item>
+    </style>
+    <style name="Tutorial.Header" parent="Widget.Leanback.OnboardingHeaderStyle">
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+    <style name="Tutorial.Title" parent="Widget.Leanback.OnboardingTitleStyle">
+        <item name="android:textSize">@dimen/text_size_content_title</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+    <style name="Tutorial.Description" parent="Widget.Leanback.OnboardingDescriptionStyle">
+        <item name="android:textSize">@dimen/text_size_content_text</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+</resources>
